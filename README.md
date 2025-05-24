@@ -60,19 +60,3 @@ This project reinforces core digital design principles such as:
 
 ---
 
-## 📁 Directory Structure
-/fpga-fighting-game
-├── src/
-│ ├── top_module.v
-│ ├── vga_controller.v
-│ ├── game_logic.v
-│ ├── renderer.v
-│ └── input_decoder.v
-├── constraints/
-│ └── board.xdc
-├── sim/
-│ └── testbenches.v
-├── README.md
-└── docs/
-└── design_notes.pdf
-
