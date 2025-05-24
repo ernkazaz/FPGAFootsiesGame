@@ -38,12 +38,12 @@ This project reinforces core digital design principles such as:
 
 ## 🔧 Controls
 
-**Player 1 (Buttons on the FPGA board 1):**
+**Player 1 (Buttons on the FPGA board):**
 - `←` Move Left
 - `→` Move Right
 - `A` Attack
 
-**Player 2 (Keypad 2):**
+**Player 2 (Keypad):**
 - `←` Move Left
 - `→` Move Right
 - `A` Attack
