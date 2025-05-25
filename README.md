@@ -2,7 +2,7 @@
 
 ## 🎮 Overview
 
-This project is a **minimalistic 2D fighting game** implemented entirely in **hardware using Verilog HDL** and deployed on an **FPGA development board**. Inspired by [Footsies](https://hifight.github.io/FOOTSIES/), an open-source fighting game by HiFight, this project focuses on core mechanics such as precise movement, hit detection, and timing — all realized without a software CPU.
+This project is a **minimalistic 2D fighting game** implemented entirely in **hardware using Verilog HDL** and deployed on an **FPGA development board**. Inspired by [Footsies](https://hifight.github.io/footsies/), an open-source fighting game by HiFight, this project focuses on core mechanics such as precise movement, hit detection, and timing — all realized without a software CPU.
 
 The game supports **two players**, rendered in **real time** on a **VGA display**, with control handled through physical keypads. The goal is to reduce your opponent's health to zero through strategic movement and attacks.
 
