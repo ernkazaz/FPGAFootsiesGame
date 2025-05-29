@@ -1,4 +1,4 @@
-module vga_sprite_v2 (
+module FSM_Game (
     input clk_50MHz,
     input reset,
     input move_right,
@@ -31,31 +31,13 @@ module vga_sprite_v2 (
     reg [9:0] sprite_x = 288;
     wire [9:0] sprite_y = 120;
 
-    localparam SPRITE_WIDTH = 32;
-localparam SPRITE_HEIGHT = 32;
+	 wire [7:0] background_color = 8'b111_111_11;
+	 wire [7:0] sprite_color = 8'b111_000_00;
 
-// Check if we're inside the sprite area
-wire inside_sprite = (pixel_x >= sprite_x) && (pixel_x < sprite_x + SPRITE_WIDTH) &&
-                     (pixel_y >= sprite_y) && (pixel_y < sprite_y + SPRITE_HEIGHT);
+    wire inside_sprite = (pixel_x >= sprite_x) && (pixel_x < sprite_x + 64) &&
+                         (pixel_y >= sprite_y) && (pixel_y < sprite_y + 240);
 
-// Calculate sprite ROM address
-wire [7:0] sprite_x_local = pixel_x - sprite_x;
-wire [7:0] sprite_y_local = pixel_y - sprite_y;
-wire [7:0] sprite_addr = (inside_sprite) ? (sprite_y_local * SPRITE_WIDTH + sprite_x_local) : 8'd0;
-
-// Output from ROM
-wire [7:0] sprite_pixel;
-
-sprite_rom my_sprite (
-    .row_col_addr(sprite_addr),
-    .pixel_data(sprite_pixel)
-);
-
-// Background color
-wire [7:0] background_color = 8'b11111111; // White
-
-// Use ROM pixel only if inside sprite area
-assign color_out = inside_sprite ? sprite_pixel : background_color;
+	 assign color_out = inside_sprite ? sprite_color : background_color;
 
     wire logic_clk = clk_60Hz;
 
@@ -106,17 +88,17 @@ assign color_out = inside_sprite ? sprite_pixel : background_color;
             case (current_state)
                 MOVE_LEFT:
                     if (sprite_x < (640 - 64))
-                        sprite_x <= sprite_x + 1;
+                        sprite_x <= sprite_x + 2;
                 MOVE_RIGHT:
 						  if (sprite_x > 0)
-                        sprite_x <= sprite_x - 1;
+                        sprite_x <= sprite_x - 3;
                 default:
                     sprite_x <= sprite_x; // No movement
             endcase
     end
 
     // VGA driver instantiation
-    driver vga (
+    vga_driver vga (
         .clock(clk_25MHz),
         .reset(reset),
         .color_in(color_out),
