@@ -18,14 +18,16 @@ module Sprite_FSM (
 		S_Attack_active = 3'd4,
 		S_Attack_recovery = 3'd5;
 	
-	reg [2:0] next_state;
+	reg [2:0] current_state,next_state;
 	
 	
 	always @(posedge clk) begin
 		if (reset) begin
-			state <= S_IDLE;
+			current_state <= S_IDLE;
+			state <= current_state;
 		end else begin 
-			state <= next_state;
+			current_state <= next_state;
+			state <= current_state;
 		end
 	end
 	
@@ -97,7 +99,8 @@ module Sprite_FSM (
 			directional_attack_flag = 0;
 			attack_flag = 0;
 			
-			case(state)
+			
+			case(current_state)
 			
 				S_Backward, S_Forward : begin
 					move_flag = 1;
