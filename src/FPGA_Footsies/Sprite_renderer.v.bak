@@ -1,0 +1,8 @@
+module Sprite_renderer(
+	input [2:0] state,
+	output [9:0] sprite_x,
+	output [9:0] sprite_y,
+	
+	
+);
+endmodule 

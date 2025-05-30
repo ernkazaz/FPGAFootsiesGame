@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1748604392" />
+    <testcase name="fsm_test" classname="FSM_Test" file="C:\Users\ernka\Desktop\FSM_Test\Tests\FSM_Test.py" lineno="8" time="0.019368648529052734" sim_time_ns="553000" ratio_time="28551295.108200595" />
+  </testsuite>
+</testsuites>

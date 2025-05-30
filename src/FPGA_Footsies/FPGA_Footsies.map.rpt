@@ -1,0 +1,643 @@
+Analysis & Synthesis report for FPGA_Footsies
+Thu May 29 14:49:01 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |FPGA_Footsies|vga_driver:vga|v_state
+  9. State Machine - |FPGA_Footsies|vga_driver:vga|h_state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: Clock_Divider:clock_vga
+ 15. Parameter Settings for User Entity Instance: Clock_Divider:clock_vga|Counter:count_inst
+ 16. Parameter Settings for User Entity Instance: Clock_Divider:clock_fsm
+ 17. Parameter Settings for User Entity Instance: Clock_Divider:clock_fsm|Counter:count_inst
+ 18. Parameter Settings for User Entity Instance: vga_driver:vga
+ 19. Port Connectivity Checks: "vga_driver:vga"
+ 20. Port Connectivity Checks: "Sprite_FSM:sprite1"
+ 21. Port Connectivity Checks: "Clock_Divider:clock_fsm"
+ 22. Port Connectivity Checks: "Clock_Divider:clock_vga"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu May 29 14:49:00 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; FPGA_Footsies                                  ;
+; Top-level Entity Name           ; FPGA_Footsies                                  ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 128                                            ;
+; Total pins                      ; 99                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; FPGA_Footsies      ; FPGA_Footsies      ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                           ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
+; Sprite_FSM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_FSM.v      ;         ;
+; Counter.v                        ; yes             ; User Verilog HDL File  ; C:/Users/ernka/Desktop/FPGA_Footsies/Counter.v         ;         ;
+; Clock_Divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/ernka/Desktop/FPGA_Footsies/Clock_Divider.v   ;         ;
+; vga_driver.v                     ; yes             ; User Verilog HDL File  ; C:/Users/ernka/Desktop/FPGA_Footsies/vga_driver.v      ;         ;
+; FPGA_Footsies.v                  ; yes             ; User Verilog HDL File  ; C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v   ;         ;
+; Sprite_renderer.v                ; yes             ; User Verilog HDL File  ; C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_renderer.v ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 120            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 205            ;
+;     -- 7 input functions                    ; 3              ;
+;     -- 6 input functions                    ; 30             ;
+;     -- 5 input functions                    ; 21             ;
+;     -- 4 input functions                    ; 15             ;
+;     -- <=3 input functions                  ; 136            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 128            ;
+;                                             ;                ;
+; I/O pins                                    ; 99             ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 69             ;
+; Total fan-out                               ; 1125           ;
+; Average fan-out                             ; 2.12           ;
++---------------------------------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                       ; Entity Name     ; Library Name ;
++------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+-----------------+--------------+
+; |FPGA_Footsies               ; 205 (19)            ; 128 (0)                   ; 0                 ; 0          ; 99   ; 0            ; |FPGA_Footsies                                            ; FPGA_Footsies   ; work         ;
+;    |Clock_Divider:clock_fsm| ; 41 (9)              ; 35 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|Clock_Divider:clock_fsm                    ; Clock_Divider   ; work         ;
+;       |Counter:count_inst|   ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|Clock_Divider:clock_fsm|Counter:count_inst ; Counter         ; work         ;
+;    |Clock_Divider:clock_vga| ; 40 (8)              ; 34 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|Clock_Divider:clock_vga                    ; Clock_Divider   ; work         ;
+;       |Counter:count_inst|   ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|Clock_Divider:clock_vga|Counter:count_inst ; Counter         ; work         ;
+;    |Sprite_FSM:sprite1|      ; 14 (14)             ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|Sprite_FSM:sprite1                         ; Sprite_FSM      ; work         ;
+;    |Sprite_renderer:render1| ; 37 (37)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|Sprite_renderer:render1                    ; Sprite_renderer ; work         ;
+;    |vga_driver:vga|          ; 54 (54)             ; 39 (39)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies|vga_driver:vga                             ; vga_driver      ; work         ;
++------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |FPGA_Footsies|vga_driver:vga|v_state                                                                  ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; v_state.V_BACK_STATE ; v_state.V_PULSE_STATE ; v_state.V_FRONT_STATE ; v_state.V_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; v_state.V_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; v_state.V_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; v_state.V_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; v_state.V_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |FPGA_Footsies|vga_driver:vga|h_state                                                                  ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; h_state.H_BACK_STATE ; h_state.H_PULSE_STATE ; h_state.H_FRONT_STATE ; h_state.H_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; h_state.H_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; h_state.H_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; h_state.H_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; h_state.H_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                              ;
++-------------------------------------------+-----------------------------------------------------+
+; Register name                             ; Reason for Removal                                  ;
++-------------------------------------------+-----------------------------------------------------+
+; vga_driver:vga|red_reg[0]                 ; Stuck at GND due to stuck port data_in              ;
+; vga_driver:vga|green_reg[0..4]            ; Stuck at GND due to stuck port data_in              ;
+; vga_driver:vga|blue_reg[0..5]             ; Stuck at GND due to stuck port data_in              ;
+; vga_driver:vga|red_reg[1..4]              ; Stuck at GND due to stuck port data_in              ;
+; Sprite_renderer:render1|sprite_y[7..9]    ; Stuck at GND due to stuck port data_in              ;
+; Sprite_renderer:render1|sprite_y[5,6]     ; Stuck at VCC due to stuck port data_in              ;
+; Sprite_renderer:render1|sprite_y[3,4]     ; Stuck at GND due to stuck port data_in              ;
+; Sprite_renderer:render1|sprite_y[2]       ; Stuck at VCC due to stuck port data_in              ;
+; Sprite_renderer:render1|sprite_y[0,1]     ; Stuck at GND due to stuck port data_in              ;
+; Clock_Divider:clock_fsm|control[1]        ; Stuck at GND due to stuck port data_in              ;
+; Clock_Divider:clock_vga|control[1]        ; Stuck at GND due to stuck port data_in              ;
+; Clock_Divider:clock_vga|prev_bypass       ; Stuck at GND due to stuck port data_in              ;
+; Sprite_renderer:render1|sprite_color[5,6] ; Merged with Sprite_renderer:render1|sprite_color[7] ;
+; Sprite_renderer:render1|sprite_color[2,3] ; Merged with Sprite_renderer:render1|sprite_color[4] ;
+; Sprite_renderer:render1|sprite_color[0]   ; Merged with Sprite_renderer:render1|sprite_color[1] ;
+; vga_driver:vga|v_state~5                  ; Lost fanout                                         ;
+; vga_driver:vga|v_state~6                  ; Lost fanout                                         ;
+; vga_driver:vga|v_state~7                  ; Lost fanout                                         ;
+; vga_driver:vga|v_state~8                  ; Lost fanout                                         ;
+; vga_driver:vga|v_state~9                  ; Lost fanout                                         ;
+; vga_driver:vga|v_state~10                 ; Lost fanout                                         ;
+; vga_driver:vga|v_state~11                 ; Lost fanout                                         ;
+; vga_driver:vga|v_state~12                 ; Lost fanout                                         ;
+; vga_driver:vga|h_state~5                  ; Lost fanout                                         ;
+; vga_driver:vga|h_state~6                  ; Lost fanout                                         ;
+; vga_driver:vga|h_state~7                  ; Lost fanout                                         ;
+; vga_driver:vga|h_state~8                  ; Lost fanout                                         ;
+; vga_driver:vga|h_state~9                  ; Lost fanout                                         ;
+; vga_driver:vga|h_state~10                 ; Lost fanout                                         ;
+; vga_driver:vga|h_state~11                 ; Lost fanout                                         ;
+; vga_driver:vga|h_state~12                 ; Lost fanout                                         ;
+; Sprite_FSM:sprite1|frame_counter[4,5]     ; Stuck at GND due to stuck port data_in              ;
+; Total Number of Removed Registers = 52    ;                                                     ;
++-------------------------------------------+-----------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 128   ;
+; Number of registers using Synchronous Clear  ; 84    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 19    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; Sprite_renderer:render1|sprite_color[1] ; 1       ;
+; Sprite_renderer:render1|sprite_x[5]     ; 6       ;
+; Sprite_renderer:render1|sprite_x[2]     ; 5       ;
+; Sprite_renderer:render1|sprite_x[6]     ; 9       ;
+; Sprite_renderer:render1|sprite_color[4] ; 1       ;
+; Sprite_renderer:render1|sprite_color[7] ; 1       ;
+; Total number of inverted registers = 6  ;         ;
++-----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+; 10:1               ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; Yes        ; |FPGA_Footsies|Sprite_renderer:render1|sprite_x[9] ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 18 LEs               ; 24 LEs                 ; Yes        ; |FPGA_Footsies|Sprite_FSM:sprite1|frame_counter[0] ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies|vga_driver:vga|v_counter[5]         ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies|vga_driver:vga|h_counter[0]         ;
+; 15:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; Yes        ; |FPGA_Footsies|Sprite_FSM:sprite1|state[0]         ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |FPGA_Footsies|Sprite_renderer:render1|sprite_x[2] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |FPGA_Footsies|vga_driver:vga|blue_reg             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Clock_Divider:clock_vga ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; division       ; 2     ; Signed Integer                              ;
+; W              ; 32    ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Clock_Divider:clock_vga|Counter:count_inst ;
++----------------+-------+----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                           ;
++----------------+-------+----------------------------------------------------------------+
+; W              ; 32    ; Signed Integer                                                 ;
++----------------+-------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Clock_Divider:clock_fsm ;
++----------------+--------+--------------------------------------------+
+; Parameter Name ; Value  ; Type                                       ;
++----------------+--------+--------------------------------------------+
+; division       ; 833334 ; Signed Integer                             ;
+; W              ; 32     ; Signed Integer                             ;
++----------------+--------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Clock_Divider:clock_fsm|Counter:count_inst ;
++----------------+-------+----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                           ;
++----------------+-------+----------------------------------------------------------------+
+; W              ; 32    ; Signed Integer                                                 ;
++----------------+-------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: vga_driver:vga ;
++----------------+------------+-------------------------------+
+; Parameter Name ; Value      ; Type                          ;
++----------------+------------+-------------------------------+
+; H_ACTIVE       ; 1001111111 ; Unsigned Binary               ;
+; H_FRONT        ; 0000001111 ; Unsigned Binary               ;
+; H_PULSE        ; 0001011111 ; Unsigned Binary               ;
+; H_BACK         ; 0000101111 ; Unsigned Binary               ;
+; V_ACTIVE       ; 0111011111 ; Unsigned Binary               ;
+; V_FRONT        ; 0000001001 ; Unsigned Binary               ;
+; V_PULSE        ; 0000000001 ; Unsigned Binary               ;
+; V_BACK         ; 0000100000 ; Unsigned Binary               ;
+; LOW            ; 0          ; Unsigned Binary               ;
+; HIGH           ; 1          ; Unsigned Binary               ;
+; H_ACTIVE_STATE ; 00000000   ; Unsigned Binary               ;
+; H_FRONT_STATE  ; 00000001   ; Unsigned Binary               ;
+; H_PULSE_STATE  ; 00000010   ; Unsigned Binary               ;
+; H_BACK_STATE   ; 00000011   ; Unsigned Binary               ;
+; V_ACTIVE_STATE ; 00000000   ; Unsigned Binary               ;
+; V_FRONT_STATE  ; 00000001   ; Unsigned Binary               ;
+; V_PULSE_STATE  ; 00000010   ; Unsigned Binary               ;
+; V_BACK_STATE   ; 00000011   ; Unsigned Binary               ;
++----------------+------------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "vga_driver:vga" ;
++-------+-------+----------+-----------------+
+; Port  ; Type  ; Severity ; Details         ;
++-------+-------+----------+-----------------+
+; reset ; Input ; Info     ; Stuck at GND    ;
++-------+-------+----------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Sprite_FSM:sprite1"                                                                                                         ;
++-------------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port                    ; Type   ; Severity ; Details                                                                                                  ;
++-------------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; reset                   ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; move_flag               ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; directional_attack_flag ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; attack_flag             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Clock_Divider:clock_fsm" ;
++-------+-------+----------+--------------------------+
+; Port  ; Type  ; Severity ; Details                  ;
++-------+-------+----------+--------------------------+
+; reset ; Input ; Info     ; Stuck at GND             ;
++-------+-------+----------+--------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Clock_Divider:clock_vga" ;
++------------+-------+----------+---------------------+
+; Port       ; Type  ; Severity ; Details             ;
++------------+-------+----------+---------------------+
+; clk_bypass ; Input ; Info     ; Stuck at GND        ;
+; button     ; Input ; Info     ; Stuck at GND        ;
+; reset      ; Input ; Info     ; Stuck at GND        ;
++------------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 128                         ;
+;     ENA               ; 9                           ;
+;     ENA SCLR          ; 10                          ;
+;     SCLR              ; 74                          ;
+;     plain             ; 35                          ;
+; arriav_lcell_comb     ; 206                         ;
+;     arith             ; 103                         ;
+;         1 data inputs ; 103                         ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 100                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 8                           ;
+;         3 data inputs ; 24                          ;
+;         4 data inputs ; 15                          ;
+;         5 data inputs ; 21                          ;
+;         6 data inputs ; 30                          ;
+; boundary_port         ; 99                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.10                        ;
+; Average LUT depth     ; 2.81                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Thu May 29 14:48:53 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGA_Footsies -c FPGA_Footsies
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file sprite_fsm.v
+    Info (12023): Found entity 1: Sprite_FSM File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_FSM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file counter.v
+    Info (12023): Found entity 1: Counter File: C:/Users/ernka/Desktop/FPGA_Footsies/Counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
+    Info (12023): Found entity 1: Clock_Divider File: C:/Users/ernka/Desktop/FPGA_Footsies/Clock_Divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga_driver.v
+    Info (12023): Found entity 1: vga_driver File: C:/Users/ernka/Desktop/FPGA_Footsies/vga_driver.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file fpga_footsies.v
+    Info (12023): Found entity 1: FPGA_Footsies File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file sprite_renderer.v
+    Info (12023): Found entity 1: Sprite_renderer File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_renderer.v Line: 1
+Info (12127): Elaborating entity "FPGA_Footsies" for the top level hierarchy
+Warning (10034): Output port "HEX0" at FPGA_Footsies.v(15) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+Warning (10034): Output port "HEX1" at FPGA_Footsies.v(16) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+Warning (10034): Output port "HEX2" at FPGA_Footsies.v(17) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+Warning (10034): Output port "HEX3" at FPGA_Footsies.v(18) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+Warning (10034): Output port "HEX4" at FPGA_Footsies.v(19) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+Warning (10034): Output port "HEX5" at FPGA_Footsies.v(20) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+Warning (10034): Output port "LEDR" at FPGA_Footsies.v(26) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+Info (12128): Elaborating entity "Clock_Divider" for hierarchy "Clock_Divider:clock_vga" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 64
+Info (12128): Elaborating entity "Counter" for hierarchy "Clock_Divider:clock_vga|Counter:count_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies/Clock_Divider.v Line: 18
+Info (12128): Elaborating entity "Clock_Divider" for hierarchy "Clock_Divider:clock_fsm" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 72
+Info (12128): Elaborating entity "Sprite_FSM" for hierarchy "Sprite_FSM:sprite1" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 81
+Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(72): truncated value with size 32 to match size of target (6) File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_FSM.v Line: 72
+Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(81): truncated value with size 32 to match size of target (6) File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_FSM.v Line: 81
+Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(90): truncated value with size 32 to match size of target (6) File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_FSM.v Line: 90
+Warning (10270): Verilog HDL Case Statement warning at Sprite_FSM.v(108): incomplete case statement has no default case item File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_FSM.v Line: 108
+Info (12128): Elaborating entity "Sprite_renderer" for hierarchy "Sprite_renderer:render1" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 89
+Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(31): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_renderer.v Line: 31
+Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(36): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies/Sprite_renderer.v Line: 36
+Info (12128): Elaborating entity "vga_driver" for hierarchy "vga_driver:vga" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 105
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 15
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 16
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 17
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 18
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 19
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 20
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 26
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 33
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 33
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 33
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 33
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 33
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 33
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 35
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 35
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 35
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 35
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 35
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 37
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 37
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 37
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 37
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 37
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 38
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 12 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 9
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 10
+    Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 11
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/ernka/Desktop/FPGA_Footsies/FPGA_Footsies.v Line: 29
+Info (21057): Implemented 314 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 81 output pins
+    Info (21061): Implemented 215 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 98 warnings
+    Info: Peak virtual memory: 4891 megabytes
+    Info: Processing ended: Thu May 29 14:49:01 2025
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:18
+
+
