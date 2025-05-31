@@ -1,4 +1,4 @@
-module Sprite_Hitbox (
+module Sprite_Boxes (
     input [2:0] state,
     input [9:0] sprite_x,
     input [9:0] sprite_y,
