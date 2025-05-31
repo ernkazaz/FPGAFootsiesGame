@@ -122,7 +122,7 @@ wire hitbox_edge_p2 = switch_hitbox && hitbox_active_p2 &&
         (pixel_y >= hitbox_y2_p2 - 2 && pixel_y < hitbox_y2_p2)
     );
 // --------------------------------------------------------------------------
-// Colors will be changed
+// Colors can be changed
 assign color_out = hitbox_edge       ? 8'hE0 :
                    hurtbox_edge      ? 8'h03 :
                    hitbox_edge_p2    ? 8'hE0 :
@@ -156,7 +156,7 @@ Sprite_FSM sprite1(
 	.state(sprite_state)
 );
 
-  // keys will be determined later
+// The keys will be determined later
 Sprite_FSM sprite2(
     .clk(clk_60MHz),
     .reset(1'b0),
