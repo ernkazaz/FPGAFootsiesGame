@@ -1,0 +1,13 @@
+// Dairenin merkezi ve yarıçapı
+parameter integer cx = 320;   // Dairenin merkez x koordinatı
+parameter integer cy = 240;   // Dairenin merkez y koordinatı
+parameter integer r = 100;    // Yarıçap
+
+wire signed [11:0] dx = pixel_x - cx;  // x farkı
+wire signed [11:0] dy = pixel_y - cy;  // y farkı
+
+wire [23:0] dist_sq = dx*dx + dy*dy;   // (x-cx)^2 + (y-cy)^2
+
+wire inside_circle = (dist_sq <= r*r);
+
+assign color_out = inside_circle ? circle_color : background_color;
