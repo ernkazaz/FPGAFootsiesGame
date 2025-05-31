@@ -1,4 +1,4 @@
-module Sprite_Boxes (
+module Sprite_boxes (
     input [2:0] state,
     input [9:0] sprite_x,
     input [9:0] sprite_y,
