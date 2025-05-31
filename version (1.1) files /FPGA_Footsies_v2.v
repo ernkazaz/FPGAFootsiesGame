@@ -49,7 +49,9 @@ wire inside_sprite = (pixel_x >= sprite_x) && (pixel_x < sprite_x + 64) &&
 wire [9:0] hitbox_x1, hitbox_x2, hitbox_y1, hitbox_y2;
 wire [9:0] hurtbox_x1, hurtbox_x2, hurtbox_y1, hurtbox_y2;
 wire hitbox_active, hurtbox_active;
+	
 wire switch_hitbox = SW[0];  // switch for hitbox on/off, can be changed   
+	
 wire [7:0] background_color = 8'b111_111_11; // will be changed
 wire [7:0] color_out;
 wire [9:0] pixel_x, pixel_y;
@@ -65,7 +67,7 @@ wire inside_hitbox = hitbox_active &&
 // -----------------------------------------------------------------------
 	
 // Hurtbox & Hitbox have 2-pixel thickness instead of covering the all sprite
-wire hurtbox_edge = draw_debug && hurtbox_active &&
+wire hurtbox_edge = switch_hitbox && hurtbox_active &&
     (
         (pixel_x >= hurtbox_x1 && pixel_x < hurtbox_x1 + 2) ||
         (pixel_x >= hurtbox_x2 - 2 && pixel_x < hurtbox_x2) ||
@@ -75,7 +77,7 @@ wire hurtbox_edge = draw_debug && hurtbox_active &&
     (pixel_x >= hurtbox_x1 && pixel_x < hurtbox_x2) &&
     (pixel_y >= hurtbox_y1 && pixel_y < hurtbox_y2);
 
-wire hitbox_edge = draw_debug && hitbox_active &&
+wire hitbox_edge = switch_hitbox && hitbox_active &&
     (
         (pixel_x >= hitbox_x1 && pixel_x < hitbox_x1 + 2) ||
         (pixel_x >= hitbox_x2 - 2 && pixel_x < hitbox_x2) ||
