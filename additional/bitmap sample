@@ -1,0 +1,29 @@
+// Example 8x8 bitmap for letter 'A' (1 = pixel on, 0 = pixel off)
+reg [7:0] letter_A [7:0];
+
+initial begin
+    letter_A[0] = 8'b00011000;
+    letter_A[1] = 8'b00100100;
+    letter_A[2] = 8'b01000010;
+    letter_A[3] = 8'b01000010;
+    letter_A[4] = 8'b01111110;
+    letter_A[5] = 8'b01000010;
+    letter_A[6] = 8'b01000010;
+    letter_A[7] = 8'b01000010;
+end
+
+// Bitmap position on screen
+parameter X0 = 100;
+parameter Y0 = 100;
+
+// Inside bitmap check
+wire inside_bitmap = (pixel_x >= X0) && (pixel_x < X0 + 8) &&
+                     (pixel_y >= Y0) && (pixel_y < Y0 + 8);
+
+wire [2:0] bitmap_x = pixel_x - X0;
+wire [2:0] bitmap_y = pixel_y - Y0;
+
+wire pixel_on = inside_bitmap && (letter_A[bitmap_y][7 - bitmap_x]);  // bit test
+
+// Output color based on bitmap pixel
+assign color_out = pixel_on ? 8'b111_111_11 : background_color;
