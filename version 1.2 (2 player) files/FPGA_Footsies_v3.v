@@ -61,7 +61,7 @@ wire hitbox_active_p2, hurtbox_active_p2;
 wire sprite_pixel_p2 = (pixel_x >= sprite_x_p2 && pixel_x < sprite_x_p2 + 64) &&
                        (pixel_y >= sprite_y_p2 && pixel_y < sprite_y_p2 + 128);
   
-wire switch_hitbox = SW[0];  // switch for hitbox on/off, can be changed   
+wire switch_hitbox = SW[0];  // Switch for hitbox on/off, can be changed   
   
 wire [7:0] background_color = 8'b111_111_11; // will be changed
 wire [7:0] color_out;
@@ -105,7 +105,7 @@ wire hitbox_edge = switch_hitbox && hitbox_active &&
     (pixel_x >= hitbox_x1 && pixel_x < hitbox_x2) &&
     (pixel_y >= hitbox_y1 && pixel_y < hitbox_y2);
 
-// Hit/hurtbox edges for player 2 (use same logic as player 1)
+// Player 2
 wire hurtbox_edge_p2 = switch_hitbox && hurtbox_active_p2 &&
     (
         (pixel_x >= hurtbox_x1_p2 && pixel_x < hurtbox_x1_p2 + 2) ||
@@ -122,7 +122,7 @@ wire hitbox_edge_p2 = switch_hitbox && hitbox_active_p2 &&
         (pixel_y >= hitbox_y2_p2 - 2 && pixel_y < hitbox_y2_p2)
     );
 // --------------------------------------------------------------------------
-// colors will be changed
+// Colors will be changed
 assign color_out = hitbox_edge       ? 8'hE0 :
                    hurtbox_edge      ? 8'h03 :
                    hitbox_edge_p2    ? 8'hE0 :
