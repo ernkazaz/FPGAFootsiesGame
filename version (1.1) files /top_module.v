@@ -117,7 +117,7 @@ Sprite_renderer render1(
 	.sprite_color(sprite_color)
 );
 
-Sprite_Hitbox boxes1 (
+Sprite_boxes boxes1 (
     .state(sprite_state),
     .sprite_x(sprite_x),
     .sprite_y(sprite_y),
