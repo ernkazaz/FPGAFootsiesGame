@@ -62,27 +62,33 @@ wire inside_hurtbox = hurtbox_active &&
 wire inside_hitbox = hitbox_active &&
                      (pixel_x >= hitbox_x1 && pixel_x < hitbox_x2) &&
                      (pixel_y >= hitbox_y1 && pixel_y < hitbox_y2);
-// --------------------------------------------------
-
-wire hurtbox_edge = hurtbox_active &&
-    ((pixel_x == hurtbox_x1 || pixel_x == hurtbox_x2 - 1) ||
-     (pixel_y == hurtbox_y1 || pixel_y == hurtbox_y2 - 1)) &&
+// -----------------------------------------------------------------------
+	
+// Hurtbox & Hitbox have 2-pixel thickness instead of covering the all sprite
+wire hurtbox_edge = draw_debug && hurtbox_active &&
+    (
+        (pixel_x >= hurtbox_x1 && pixel_x < hurtbox_x1 + 2) ||
+        (pixel_x >= hurtbox_x2 - 2 && pixel_x < hurtbox_x2) ||
+        (pixel_y >= hurtbox_y1 && pixel_y < hurtbox_y1 + 2) ||
+        (pixel_y >= hurtbox_y2 - 2 && pixel_y < hurtbox_y2)
+    ) &&
     (pixel_x >= hurtbox_x1 && pixel_x < hurtbox_x2) &&
     (pixel_y >= hurtbox_y1 && pixel_y < hurtbox_y2);
 
-wire hitbox_edge = hitbox_active &&
-    ((pixel_x == hitbox_x1 || pixel_x == hitbox_x2 - 1) ||
-     (pixel_y == hitbox_y1 || pixel_y == hitbox_y2 - 1)) &&
+wire hitbox_edge = draw_debug && hitbox_active &&
+    (
+        (pixel_x >= hitbox_x1 && pixel_x < hitbox_x1 + 2) ||
+        (pixel_x >= hitbox_x2 - 2 && pixel_x < hitbox_x2) ||
+        (pixel_y >= hitbox_y1 && pixel_y < hitbox_y1 + 2) ||
+        (pixel_y >= hitbox_y2 - 2 && pixel_y < hitbox_y2)
+    ) &&
     (pixel_x >= hitbox_x1 && pixel_x < hitbox_x2) &&
     (pixel_y >= hitbox_y1 && pixel_y < hitbox_y2);
-
+// --------------------------------------------------------------------------
 assign color_out = hitbox_edge  ? 8'hE0 :     // red
                    hurtbox_edge ? 8'h03 :     // blue
                    sprite_pixel ? sprite_color :
                    background_color;
-
-
-
 
 Clock_Divider #(.division(2)) clock_vga(
 	.clk_in(CLOCK_50),
@@ -132,7 +138,6 @@ Sprite_boxes boxes1 (
     .hitbox_active(hitbox_active),
     .hurtbox_active(hurtbox_active)
 );
-
 
 vga_driver vga(
 	.clock(clk_25MHz),
