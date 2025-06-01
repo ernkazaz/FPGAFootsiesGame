@@ -255,7 +255,6 @@ module FPGA_Footsies(
         .pixel_y       (pixel_y),             // <— was missing
         .sprite_x      (sprite_x_p1),
         .sprite_y      (sprite_y_p1),
-        .sprite_color  (/* unused here—color is forced to 0x00/0xE0/etc. above */),
         .inside_bandana(inside_bandana_p1)
     );
 
@@ -270,7 +269,6 @@ module FPGA_Footsies(
         .pixel_y       (pixel_y),
         .sprite_x      (sprite_x_p2),
         .sprite_y      (sprite_y_p2),
-        .sprite_color  (/* unused */),
         .inside_bandana(inside_bandana_p2)
     );
 
