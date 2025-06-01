@@ -1,3 +1,5 @@
+// In this version of the module, stuns are only due to basic attack.
+
 module Sprite_FSM (
     input clk,
     input reset,
