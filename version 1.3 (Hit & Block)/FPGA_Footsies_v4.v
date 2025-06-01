@@ -127,6 +127,7 @@ wire attack_flag_p2, directional_attack_flag_p2;
 wire got_hit_p1, got_blocked_p1;
 wire got_hit_p2, got_blocked_p2; 
 
+wire inside_bandana_p1, inside_bandana_p2;
 wire [7:0] bg_color;
 wire [7:0] color_out;
 
@@ -141,26 +142,20 @@ assign color_out = hitbox_edge       ? 8'hE0 : // Red
 		   inside_bandana_p2 ? 8'hFF :
                    bg_color;
 
-Background_Renderer background (
-    .pixel_x(pixel_x),
-    .pixel_y(pixel_y),
-    .bg_color(bg_color)
-);
-
 Clock_Divider #(.division(2)) clock_vga(
-	.clk_in(CLOCK_50),
-	.clk_bypass(1'b0),
-	.button(1'b0),
-	.reset(1'b0),
-	.clk_out(clk_25MHz)
+     .clk_in(CLOCK_50),
+     .clk_bypass(1'b0),
+     .button(1'b0),
+     .reset(1'b0),
+     .clk_out(clk_25MHz)
 );
 
 Clock_Divider #(.division(833334)) clock_fsm(
-	.clk_in(CLOCK_50),
-	.clk_bypass(SW[1]),
-	.button(~KEY[0]),
-	.reset(1'b0),
-	.clk_out(clk_60MHz)
+     .clk_in(CLOCK_50),
+     .clk_bypass(SW[1]),
+     .button(~KEY[0]),
+     .reset(1'b0),
+     .clk_out(clk_60MHz)
 );
 
 Sprite_FSM fsm_p1 (
@@ -192,13 +187,13 @@ Sprite_FSM fsm_p2 (
     .attack_flag(attack_flag_p2)
 );
 
-
 Sprite_renderer render1(
-	.clk(clk_60MHz),
-	.state(sprite_state),
-	.sprite_x(sprite_x),
-	.sprite_y(sprite_y),
-	.sprite_color(sprite_color)
+     .clk(clk_60MHz),
+     .state(sprite_state),
+     .sprite_x(sprite_x),
+     .sprite_y(sprite_y),
+     .sprite_color(sprite_color)
+	.inside_bandana(inside_bandana_p1)
 );
 
 Sprite_renderer #(.IS_MIRRORED(1)) render2(
@@ -207,8 +202,14 @@ Sprite_renderer #(.IS_MIRRORED(1)) render2(
     .sprite_x(sprite_x_p2),
     .sprite_y(sprite_y_p2),
     .sprite_color(sprite_color_p2)
+	.inside_bandana(inside_bandana_p2)
 );
 
+Background_Renderer background (
+    .pixel_x(pixel_x),
+    .pixel_y(pixel_y),
+    .bg_color(bg_color)
+);
 
 Sprite_boxes boxes1 (
     .state(sprite_state),
@@ -263,7 +264,6 @@ Collision_Logic col_p1_hits_p2 (
     .got_blocked_target(got_blocked_p2)
 );
 
-
 // Player 2 attacks player 1
 Collision_logic col_p2_hits_p1 (
     .attacker_hitbox_x1(hitbox_x1_p2),
@@ -285,22 +285,20 @@ Collision_logic col_p2_hits_p1 (
     .got_blocked_target(got_blocked_p1)
 );
 
-
-
 vga_driver vga(
-	.clock(clk_25MHz),
-        .reset(1'b0),
-	.color_in(color_out),
-	.next_x(pixel_x),
-	.next_y(pixel_y),
-	.hsync(VGA_HS),
-	.vsync(VGA_VS),
-	.red(VGA_R),
-	.green(VGA_G),
-	.blue(VGA_B),
-	.sync(VGA_SYNC_N),
-	.clk(VGA_CLK),
-	.blank(VGA_BLANK_N)
+     .clock(clk_25MHz),
+     .reset(1'b0),
+     .color_in(color_out),
+     .next_x(pixel_x),
+     .next_y(pixel_y),
+     .hsync(VGA_HS),
+     .vsync(VGA_VS),
+     .red(VGA_R),
+     .green(VGA_G),
+     .blue(VGA_B),
+     .sync(VGA_SYNC_N),
+     .clk(VGA_CLK),
+     .blank(VGA_BLANK_N)
 );
 
 endmodule
