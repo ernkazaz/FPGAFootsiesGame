@@ -121,12 +121,17 @@ wire hitbox_edge_p2 = switch_hitbox && hitbox_active_p2 &&
         (pixel_y >= hitbox_y2_p2 - 2 && pixel_y < hitbox_y2_p2)
     );
 // --------------------------------------------------------------------------
-wire got_hit_p2, got_blocked_p2;
-wire got_hit_p1, got_blocked_p1;
-
 wire is_blocking_p1 = // The keys will be assigned
 wire is_blocking_p2 =
-  
+
+// From FSM outputs
+wire attack_flag_p1, directional_attack_flag_p1;
+wire attack_flag_p2, directional_attack_flag_p2;
+
+wire got_hit_p1, got_blocked_p1;
+wire got_hit_p2, got_blocked_p2;
+
+
 // Colors can be changed
 assign color_out = hitbox_edge       ? 8'hE0 :
                    hurtbox_edge      ? 8'h03 :
@@ -152,28 +157,36 @@ Clock_Divider #(.division(833334)) clock_fsm(
 	.clk_out(clk_60MHz)
 );
 
-Sprite_FSM sprite1(
-	.clk(clk_60MHz),
-	.reset(1'b0),
-	.left(~KEY[3]),
-	.right(~KEY[1]),
-	.attack(~KEY[2]),
-  .got_hit(got_hit_p1),
-  .got_blocked(got_blocked_p1),
-	.state(sprite_state)
-);
-
-// The keys will be determined later
-Sprite_FSM sprite2(
+Sprite_FSM fsm_p1 (
     .clk(clk_60MHz),
     .reset(1'b0),
-    .left(),   
+    .left(~KEY[3]),
+    .right(~KEY[1]),
+    .attack(~KEY[2]),
+    .got_hit(got_hit_p1),
+    .got_blocked(got_blocked_p1),
+    .state(sprite_state),
+    .move_flag(move_flag),
+    .directional_attack_flag(directional_attack_flag),
+    .attack_flag(attack_flag)
+);
+
+
+// The keys will be determined later
+Sprite_FSM fsm_p2 (
+    .clk(clk_60MHz),
+    .reset(1'b0),
+    .left(),
     .right(),
     .attack(),
     .got_hit(got_hit_p2),
     .got_blocked(got_blocked_p2),
-    .state(sprite_state_p2)
+    .state(sprite_state_p2),
+    .move_flag(move_flag_p2),
+    .directional_attack_flag(directional_attack_flag_p2),
+    .attack_flag(attack_flag_p2)
 );
+
 
 Sprite_renderer render1(
 	.clk(clk_60MHz),
@@ -253,6 +266,47 @@ Stun_Detector p2_to_p1_stun (
     .got_hit(got_hit_p1),
     .got_blocked(got_blocked_p1)
 );
+
+Collision_Logic col_p1_to_p2 (
+    .hitbox_x1_p1(hitbox_x1),
+    .hitbox_x2_p1(hitbox_x2),
+    .hitbox_y1_p1(hitbox_y1),
+    .hitbox_y2_p1(hitbox_y2),
+    .hitbox_active_p1(hitbox_active),
+    .attack_flag_p1(attack_flag),
+    .dir_attack_flag_p1(directional_attack_flag),
+
+    .hurtbox_x1_p2(hurtbox_x1_p2),
+    .hurtbox_x2_p2(hurtbox_x2_p2),
+    .hurtbox_y1_p2(hurtbox_y1_p2),
+    .hurtbox_y2_p2(hurtbox_y2_p2),
+    .hurtbox_active_p2(hurtbox_active_p2),
+    .is_blocking_p2(1'b0), // TODO: Implement actual blocking input
+
+    .got_hit_p2(got_hit_p2),
+    .got_blocked_p2(got_blocked_p2)
+);
+
+Collision_Logic col_p2_to_p1 (
+    .hitbox_x1_p1(hitbox_x1_p2),
+    .hitbox_x2_p1(hitbox_x2_p2),
+    .hitbox_y1_p1(hitbox_y1_p2),
+    .hitbox_y2_p1(hitbox_y2_p2),
+    .hitbox_active_p1(hitbox_active_p2),
+    .attack_flag_p1(attack_flag_p2),
+    .dir_attack_flag_p1(directional_attack_flag_p2),
+
+    .hurtbox_x1_p2(hurtbox_x1),
+    .hurtbox_x2_p2(hurtbox_x2),
+    .hurtbox_y1_p2(hurtbox_y1),
+    .hurtbox_y2_p2(hurtbox_y2),
+    .hurtbox_active_p2(hurtbox_active),
+    .is_blocking_p2(1'b0), // TODO: P1 block logic
+
+    .got_hit_p2(got_hit_p1),
+    .got_blocked_p2(got_blocked_p1)
+);
+
 
 vga_driver vga(
 	.clock(clk_25MHz),
