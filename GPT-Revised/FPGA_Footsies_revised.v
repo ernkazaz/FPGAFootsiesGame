@@ -255,6 +255,7 @@ module FPGA_Footsies(
         .pixel_y       (pixel_y),             // <— was missing
         .sprite_x      (sprite_x_p1),
         .sprite_y      (sprite_y_p1),
+        .sprite_color  (8'b0)                 // It is unused, can be remowed if changing state colors is unwanted.
         .inside_bandana(inside_bandana_p1)
     );
 
@@ -269,6 +270,7 @@ module FPGA_Footsies(
         .pixel_y       (pixel_y),
         .sprite_x      (sprite_x_p2),
         .sprite_y      (sprite_y_p2),
+        .sprite_color  (8'b0)                 // It is unused, can be remowed if changing state colors is unwanted.
         .inside_bandana(inside_bandana_p2)
     );
 
