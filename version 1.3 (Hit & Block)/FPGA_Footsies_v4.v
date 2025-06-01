@@ -268,46 +268,48 @@ Stun_Detector p2_to_p1_stun (
 );
 
 // Player 1 attacks player 2
-Collision_Logic col_p1_to_p2 (
-    .hitbox_x1_p1(hitbox_x1),
-    .hitbox_x2_p1(hitbox_x2),
-    .hitbox_y1_p1(hitbox_y1),
-    .hitbox_y2_p1(hitbox_y2),
-    .hitbox_active_p1(hitbox_active),
-    .attack_flag_p1(attack_flag),
-    .dir_attack_flag_p1(directional_attack_flag),
+Collision_Logic col_p1_hits_p2 (
+    .attacker_hitbox_x1(hitbox_x1),
+    .attacker_hitbox_x2(hitbox_x2),
+    .attacker_hitbox_y1(hitbox_y1),
+    .attacker_hitbox_y2(hitbox_y2),
+    .attacker_hitbox_active(hitbox_active),
+    .attacker_attack_flag(attack_flag),
+    .attacker_diratk_flag(directional_attack_flag),
 
-    .hurtbox_x1_p2(hurtbox_x1_p2),
-    .hurtbox_x2_p2(hurtbox_x2_p2),
-    .hurtbox_y1_p2(hurtbox_y1_p2),
-    .hurtbox_y2_p2(hurtbox_y2_p2),
-    .hurtbox_active_p2(hurtbox_active_p2),
-    .is_blocking_p2(is_blocking_p2),
+    .target_hurtbox_x1(hurtbox_x1_p2),
+    .target_hurtbox_x2(hurtbox_x2_p2),
+    .target_hurtbox_y1(hurtbox_y1_p2),
+    .target_hurtbox_y2(hurtbox_y2_p2),
+    .target_hurtbox_active(hurtbox_active_p2),
+    .target_is_blocking(is_blocking_p2),
 
     .got_hit_target(got_hit_p2),
     .got_blocked_target(got_blocked_p2)
 );
 
-// Player 2 attacks player 1
-Collision_Logic col_p2_to_p1 (
-    .hitbox_x1_p1(hitbox_x1_p2),
-    .hitbox_x2_p1(hitbox_x2_p2),
-    .hitbox_y1_p1(hitbox_y1_p2),
-    .hitbox_y2_p1(hitbox_y2_p2),
-    .hitbox_active_p1(hitbox_active_p2),
-    .attack_flag_p1(attack_flag_p2),
-    .dir_attack_flag_p1(directional_attack_flag_p2),
 
-    .hurtbox_x1_p2(hurtbox_x1),
-    .hurtbox_x2_p2(hurtbox_x2),
-    .hurtbox_y1_p2(hurtbox_y1),
-    .hurtbox_y2_p2(hurtbox_y2),
-    .hurtbox_active_p2(hurtbox_active),
-    .is_blocking_p2(is_blocking_p1),
+// Player 2 attacks player 1
+Collision_logic col_p2_hits_p1 (
+    .attacker_hitbox_x1(hitbox_x1_p2),
+    .attacker_hitbox_x2(hitbox_x2_p2),
+    .attacker_hitbox_y1(hitbox_y1_p2),
+    .attacker_hitbox_y2(hitbox_y2_p2),
+    .attacker_hitbox_active(hitbox_active_p2),
+    .attacker_attack_flag(attack_flag_p2),
+    .attacker_diratk_flag(directional_attack_flag_p2),
+
+    .target_hurtbox_x1(hurtbox_x1),
+    .target_hurtbox_x2(hurtbox_x2),
+    .target_hurtbox_y1(hurtbox_y1),
+    .target_hurtbox_y2(hurtbox_y2),
+    .target_hurtbox_active(hurtbox_active),
+    .target_is_blocking(is_blocking_p1),
 
     .got_hit_target(got_hit_p1),
     .got_blocked_target(got_blocked_p1)
 );
+
 
 
 vga_driver vga(
