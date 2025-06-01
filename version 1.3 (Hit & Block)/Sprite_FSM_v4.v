@@ -165,22 +165,21 @@ module Sprite_FSM (
         end
     end
 
-    // Output logic
     always @(*) begin
         move_flag = 0;
-        attack_flag = 0;
+        basic_attack_flag = 0;
         directional_attack_flag = 0;
 
         case (state)
-            S_Backward, S_Forward:
+            S_Backward, S_Forward: begin
                 move_flag = 1;
+            end
 
             S_Attack_start, S_Attack_active: begin
-                attack_flag = 1;
+                basic_attack_flag = 1;
             end
 
             S_DirAtk_start, S_DirAtk_active: begin
-                attack_flag = 1;
                 directional_attack_flag = 1;
             end
         endcase
