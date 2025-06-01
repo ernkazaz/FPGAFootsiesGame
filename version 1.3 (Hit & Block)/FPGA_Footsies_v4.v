@@ -267,6 +267,7 @@ Stun_Detector p2_to_p1_stun (
     .got_blocked(got_blocked_p1)
 );
 
+// Player 1 attacks player 2
 Collision_Logic col_p1_to_p2 (
     .hitbox_x1_p1(hitbox_x1),
     .hitbox_x2_p1(hitbox_x2),
@@ -281,12 +282,13 @@ Collision_Logic col_p1_to_p2 (
     .hurtbox_y1_p2(hurtbox_y1_p2),
     .hurtbox_y2_p2(hurtbox_y2_p2),
     .hurtbox_active_p2(hurtbox_active_p2),
-    .is_blocking_p2(1'b0), // TODO: Implement actual blocking input
+    .is_blocking_p2(is_blocking_p2),
 
-    .got_hit_p2(got_hit_p2),
-    .got_blocked_p2(got_blocked_p2)
+    .got_hit_target(got_hit_p2),
+    .got_blocked_target(got_blocked_p2)
 );
 
+// Player 2 attacks player 1
 Collision_Logic col_p2_to_p1 (
     .hitbox_x1_p1(hitbox_x1_p2),
     .hitbox_x2_p1(hitbox_x2_p2),
@@ -301,10 +303,10 @@ Collision_Logic col_p2_to_p1 (
     .hurtbox_y1_p2(hurtbox_y1),
     .hurtbox_y2_p2(hurtbox_y2),
     .hurtbox_active_p2(hurtbox_active),
-    .is_blocking_p2(1'b0), // TODO: P1 block logic
+    .is_blocking_p2(is_blocking_p1),
 
-    .got_hit_p2(got_hit_p1),
-    .got_blocked_p2(got_blocked_p1)
+    .got_hit_target(got_hit_p1),
+    .got_blocked_target(got_blocked_p1)
 );
 
 
