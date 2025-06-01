@@ -10,6 +10,7 @@ module Sprite_renderer #(
     input  [9:0] pixel_y,
     output reg [9:0] sprite_x,
     output reg [9:0] sprite_y,
+    output reg [7:0] sprite_color,    // Can be removed, if changing state colors are unnecessary.
     output wire      inside_bandana
 );
 
