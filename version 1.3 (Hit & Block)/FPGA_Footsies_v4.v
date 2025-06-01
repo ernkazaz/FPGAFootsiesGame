@@ -45,7 +45,6 @@ wire clk_60MHz;
 // P1
 wire [2:0] sprite_state; 
 wire [9:0] sprite_x, sprite_y;
-wire [7:0] sprite_color; // Color will be selected
 wire [9:0] hitbox_x1, hitbox_x2, hitbox_y1, hitbox_y2;
 wire [9:0] hurtbox_x1, hurtbox_x2, hurtbox_y1, hurtbox_y2;
 wire hitbox_active, hurtbox_active;
@@ -54,7 +53,6 @@ wire sprite_pixel_p1 = (pixel_x >= sprite_x && pixel_x < sprite_x + 64) &&
 //P2
 wire [2:0] sprite_state_p2;
 wire [9:0] sprite_x_p2, sprite_y_p2;
-wire [7:0] sprite_color_p2; // Color will be selected
 wire [9:0] hitbox_x1_p2, hitbox_x2_p2, hitbox_y1_p2, hitbox_y2_p2;
 wire [9:0] hurtbox_x1_p2, hurtbox_x2_p2, hurtbox_y1_p2, hurtbox_y2_p2;
 wire hitbox_active_p2, hurtbox_active_p2;
@@ -62,9 +60,7 @@ wire sprite_pixel_p2 = (pixel_x >= sprite_x_p2 && pixel_x < sprite_x_p2 + 64) &&
                        (pixel_y >= sprite_y_p2 && pixel_y < sprite_y_p2 + 128);
   
 wire switch_hitbox = SW[0];  // Switch for hitbox on/off, can be changed   
-  
-wire [7:0] background_color = 8'b111_111_11; // will be changed
-wire [7:0] color_out;
+  	
 wire [9:0] pixel_x, pixel_y;
 
 // No need for now, but inside wires will be needed for collision check //
@@ -121,24 +117,28 @@ wire hitbox_edge_p2 = switch_hitbox && hitbox_active_p2 &&
         (pixel_y >= hitbox_y2_p2 - 2 && pixel_y < hitbox_y2_p2)
     );
 // --------------------------------------------------------------------------
-wire is_blocking_p1 = // The keys will be assigned
-wire is_blocking_p2 =
+wire is_blocking_p1 = ~KEY[3]  // Left is blocking at the same time, can be assigned another key.
+wire is_blocking_p2 = SW[9]    // Same. Temporary key assignment.
 
 // From FSM outputs
 wire attack_flag_p1, directional_attack_flag_p1;
 wire attack_flag_p2, directional_attack_flag_p2;
 
 wire got_hit_p1, got_blocked_p1;
-wire got_hit_p2, got_blocked_p2;
+wire got_hit_p2, got_blocked_p2; 
 
+// wire [7:0] sprite_color; Adjusted at the color_out.
+// wire [7:0] sprite_color_p2; Adjusted at the color_out.
+// wire [7:0] background_color = 8'b111_111_11; Adjusted at the color_out.
+wire [7:0] color_out;
 
 // Colors can be changed
 assign color_out = hitbox_edge       ? 8'hE0 :
                    hurtbox_edge      ? 8'h03 :
                    hitbox_edge_p2    ? 8'hE0 :
                    hurtbox_edge_p2   ? 8'h03 :
-                   sprite_pixel      ? sprite_color :
-                   sprite_pixel_p2   ? sprite_color_p2 :
+                   sprite_pixel      ?  :
+                   sprite_pixel_p2   ?  :
                    background_color;
 
 Clock_Divider #(.division(2)) clock_vga(
@@ -171,14 +171,13 @@ Sprite_FSM fsm_p1 (
     .attack_flag(attack_flag)
 );
 
-
-// The keys will be determined later
+// The keys will be assigned again later
 Sprite_FSM fsm_p2 (
     .clk(clk_60MHz),
     .reset(1'b0),
-    .left(),
-    .right(),
-    .attack(),
+	.left(SW[9]),
+	.right(SW[7]),
+	.attack(SW[8]),
     .got_hit(got_hit_p2),
     .got_blocked(got_blocked_p2),
     .state(sprite_state_p2),
@@ -235,36 +234,6 @@ Sprite_Boxes #(.IS_MIRRORED(1)) boxes2 (
     .hurtbox_y2(hurtbox_y2_p2),
     .hitbox_active(hitbox_active_p2),
     .hurtbox_active(hurtbox_active_p2)
-);
-
-// P1 attacks P2
-Stun_Detector p1_to_p2_stun (
-    .hitbox_x1(hitbox_x1), .hitbox_x2(hitbox_x2),
-    .hitbox_y1(hitbox_y1), .hitbox_y2(hitbox_y2),
-    .hitbox_active(hitbox_active),
-
-    .opponent_hurtbox_x1(hurtbox_x1_p2), .opponent_hurtbox_x2(hurtbox_x2_p2),
-    .opponent_hurtbox_y1(hurtbox_y1_p2), .opponent_hurtbox_y2(hurtbox_y2_p2),
-    .hurtbox_active(hurtbox_active_p2),
-
-    .is_blocking(is_blocking_p2),
-    .got_hit(got_hit_p2),
-    .got_blocked(got_blocked_p2)
-);
-
-// P2 attacks P1
-Stun_Detector p2_to_p1_stun (
-    .hitbox_x1(hitbox_x1_p2), .hitbox_x2(hitbox_x2_p2),
-    .hitbox_y1(hitbox_y1_p2), .hitbox_y2(hitbox_y2_p2),
-    .hitbox_active(hitbox_active_p2),
-
-    .opponent_hurtbox_x1(hurtbox_x1), .opponent_hurtbox_x2(hurtbox_x2),
-    .opponent_hurtbox_y1(hurtbox_y1), .opponent_hurtbox_y2(hurtbox_y2),
-    .hurtbox_active(hurtbox_active),
-
-    .is_blocking(is_blocking_p1),
-    .got_hit(got_hit_p1),
-    .got_blocked(got_blocked_p1)
 );
 
 // Player 1 attacks player 2
