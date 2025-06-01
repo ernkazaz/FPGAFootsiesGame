@@ -137,6 +137,8 @@ assign color_out = hitbox_edge       ? 8'hE0 : // Red
                    hurtbox_edge_p2   ? 8'hFC :
                    sprite_pixel      ? 8'h00 : // Black
                    sprite_pixel_p2   ? 8'h00 :
+		   inside_bandana_p1 ? 8'hFF : // White
+		   inside_bandana_p2 ? 8'hFF :
                    bg_color;
 
 Background_Renderer background (
