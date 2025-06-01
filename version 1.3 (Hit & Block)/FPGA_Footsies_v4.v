@@ -127,19 +127,23 @@ wire attack_flag_p2, directional_attack_flag_p2;
 wire got_hit_p1, got_blocked_p1;
 wire got_hit_p2, got_blocked_p2; 
 
-// wire [7:0] sprite_color; Adjusted at the color_out.
-// wire [7:0] sprite_color_p2; Adjusted at the color_out.
-// wire [7:0] background_color = 8'b111_111_11; Adjusted at the color_out.
+wire [7:0] bg_color;
 wire [7:0] color_out;
 
 // Colors can be changed
-assign color_out = hitbox_edge       ? 8'hE0 :
-                   hurtbox_edge      ? 8'h03 :
+assign color_out = hitbox_edge       ? 8'hE0 : // Red
+                   hurtbox_edge      ? 8'hFC : // Yellow
                    hitbox_edge_p2    ? 8'hE0 :
-                   hurtbox_edge_p2   ? 8'h03 :
-                   sprite_pixel      ?  :
-                   sprite_pixel_p2   ?  :
-                   background_color;
+                   hurtbox_edge_p2   ? 8'hFC :
+                   sprite_pixel      ? 8'h00 : // Black
+                   sprite_pixel_p2   ? 8'h00 :
+                   bg_color;
+
+Background_Renderer background (
+    .pixel_x(pixel_x),
+    .pixel_y(pixel_y),
+    .bg_color(bg_color)
+);
 
 Clock_Divider #(.division(2)) clock_vga(
 	.clk_in(CLOCK_50),
