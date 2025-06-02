@@ -12,7 +12,7 @@ module Sprite_FSM (
     output reg [3:0] state,
     output reg       move_flag,
     output reg       directional_attack_flag,
-    output reg       attack_flag
+    output reg       basic_attack_flag
 );
 
     localparam [3:0] 
