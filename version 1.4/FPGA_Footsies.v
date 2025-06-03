@@ -262,7 +262,7 @@ module FPGA_Footsies(
         .state         (sprite_state_p1),
         .pixel_x       (pixel_x),             
         .pixel_y       (pixel_y), 		       
-		  .opponent_x    (sprite_x_p2),
+	.opponent_x    (sprite_x_p2),
         .sprite_x      (sprite_x_p1),
         .sprite_y      (sprite_y_p1),
         .sprite_color  (sprite_color)               // It is unused, can be remowed if changing state colors is unwanted.
@@ -275,7 +275,7 @@ module FPGA_Footsies(
         .pixel_x       (pixel_x),
         .pixel_y       (pixel_y),
         .opponent_x    (sprite_x_p1),
-		  .sprite_x      (sprite_x_p2),
+	.sprite_x      (sprite_x_p2),
         .sprite_y      (sprite_y_p2),
         .sprite_color  (sprite_color)               // It is unused, can be remowed if changing state colors is unwanted.
         //.inside_bandana(inside_bandana_p2)
@@ -299,18 +299,18 @@ module FPGA_Footsies(
         .hurtbox_x2       (hurtbox_x2_p1),
         .hurtbox_y1       (hurtbox_y1_p1),
         .hurtbox_y2       (hurtbox_y2_p1),
-		  .hurtbox_rec_x1   (hurtbox_rec_x1_p1),
-		  .hurtbox_rec_x2   (hurtbox_rec_x2_p1),
-		  .hurtbox_rec_y1   (hurtbox_rec_y1_p1),
-		  .hurtbox_rec_y2   (hurtbox_rec_y2_p1),
-		  .visible_box_x1   (visible_box_x1_p1),
-		  .visible_box_x2   (visible_box_x2_p1),
-		  .visible_box_y1   (visible_box_y1_p1),
-		  .visible_box_y2   (visible_box_y2_p1),
+	.hurtbox_rec_x1   (hurtbox_rec_x1_p1),
+	.hurtbox_rec_x2   (hurtbox_rec_x2_p1),
+	.hurtbox_rec_y1   (hurtbox_rec_y1_p1),
+	.hurtbox_rec_y2   (hurtbox_rec_y2_p1),
+	.visible_box_x1   (visible_box_x1_p1),
+	.visible_box_x2   (visible_box_x2_p1),
+	.visible_box_y1   (visible_box_y1_p1),
+	.visible_box_y2   (visible_box_y2_p1),
         .hitbox_active    (hitbox_active_p1),
         .hurtbox_active   (hurtbox_active_p1),
-		  .recovery_hurtbox_active (recovery_hurtbox_active_p1),
-		  .visible_box_active      (visible_box_active_p1)
+	.recovery_hurtbox_active (recovery_hurtbox_active_p1),
+	.visible_box_active      (visible_box_active_p1)
     );
 
     Sprite_boxes #(.IS_MIRRORED(1)) boxes2 (
@@ -325,21 +325,20 @@ module FPGA_Footsies(
         .hurtbox_x2       (hurtbox_x2_p2),
         .hurtbox_y1       (hurtbox_y1_p2),
         .hurtbox_y2       (hurtbox_y2_p2),
-		  .hurtbox_rec_x1   (hurtbox_rec_x1_p2),
-		  .hurtbox_rec_x2   (hurtbox_rec_x2_p2),
-		  .hurtbox_rec_y1   (hurtbox_rec_y1_p2),
-		  .hurtbox_rec_y2   (hurtbox_rec_y2_p2),
-		  .visible_box_x1   (visible_box_x1_p2),
-		  .visible_box_x2   (visible_box_x2_p2),
-		  .visible_box_y1   (visible_box_y1_p2),
-		  .visible_box_y2   (visible_box_y2_p2),
+	.hurtbox_rec_x1   (hurtbox_rec_x1_p2),
+	.hurtbox_rec_x2   (hurtbox_rec_x2_p2),
+	.hurtbox_rec_y1   (hurtbox_rec_y1_p2),
+	.hurtbox_rec_y2   (hurtbox_rec_y2_p2),
+	.visible_box_x1   (visible_box_x1_p2),
+	.visible_box_x2   (visible_box_x2_p2),
+	.visible_box_y1   (visible_box_y1_p2),
+	.visible_box_y2   (visible_box_y2_p2),
         .hitbox_active    (hitbox_active_p2),
         .hurtbox_active   (hurtbox_active_p2),
-		  .recovery_hurtbox_active (recovery_hurtbox_active_p2),
-		  .visible_box_active      (visible_box_active_p2)
+	.recovery_hurtbox_active (recovery_hurtbox_active_p2),
+	.visible_box_active      (visible_box_active_p2)
     );
 
-	 // After new hurtboxes, will be adjust accordingly later
     Collision_logic col_p1_hits_p2 (
         .attacker_hitbox_x1       (hitbox_x1_p1),
         .attacker_hitbox_x2       (hitbox_x2_p1),
@@ -356,11 +355,16 @@ module FPGA_Footsies(
         .target_hurtbox_active    (hurtbox_active_p2),
         .target_is_blocking       (is_blocking_p2),
 
+        .target_recovery_hurtbox_x1  (hurtbox_rec_x1_p2),    
+        .target_recovery_hurtbox_x2  (hurtbox_rec_x2_p2),
+        .target_recovery_hurtbox_y1  (hurtbox_rec_y1_p2),
+        .target_recovery_hurtbox_y2  (hurtbox_rec_y2_p2),
+        .target_recovery_hurtbox_active (recovery_hurtbox_active_p2),	
+  
         .got_hit_target           (got_hit_p2),
         .got_blocked_target       (got_blocked_p2)
     );
 
-	 // After new hurtboxes, will be adjust accordingly later
     Collision_logic col_p2_hits_p1 (
         .attacker_hitbox_x1       (hitbox_x1_p2),
         .attacker_hitbox_x2       (hitbox_x2_p2),
@@ -376,6 +380,11 @@ module FPGA_Footsies(
         .target_hurtbox_y2        (hurtbox_y2_p1),
         .target_hurtbox_active    (hurtbox_active_p1),
         .target_is_blocking       (is_blocking_p1),
+        .target_recovery_hurtbox_x1  (hurtbox_rec_x1_p1),     
+        .target_recovery_hurtbox_x2  (hurtbox_rec_x2_p1),
+        .target_recovery_hurtbox_y1  (hurtbox_rec_y1_p1),
+        .target_recovery_hurtbox_y2  (hurtbox_rec_y2_p1),
+        .target_recovery_hurtbox_active (recovery_hurtbox_active_p1),
 
         .got_hit_target           (got_hit_p1),
         .got_blocked_target       (got_blocked_p1)
