@@ -30,14 +30,12 @@ module Sprite_renderer #(
     localparam integer SPRITE_WIDTH = 64;
     localparam integer SPRITE_HEIGHT= 240;
 
-    // Initial position:
     initial begin
         sprite_x    = IS_MIRRORED ? (SCREEN_WIDTH - 100 - SPRITE_WIDTH) : 100;
         sprite_y    = 180;
         sprite_color= 8'hFF; // (unused if VGA is drawn by higher-level color_out)
     end
 
-    // Movement logic (clocked at clk_60MHz):
     always @(posedge clk) begin
         case(state)
             S_Forward: begin
@@ -71,14 +69,13 @@ module Sprite_renderer #(
             end
 
             default: begin
-                sprite_x <= sprite_x; // hold position
+                sprite_x <= sprite_x;
             end
         endcase
 
-        sprite_y <= 180; // fixed vertical
+        sprite_y <= 180;
     end
 
-    // Just a placeholder color—actual VGA color is done by top‐level “color_out”
     always @(*) begin
         case (state)
             S_IDLE,
