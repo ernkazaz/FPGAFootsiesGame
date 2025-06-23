@@ -1,0 +1,34 @@
+module vga_background (
+    input wire clock,           // 25 MHz clock
+    input wire reset,           // Active high reset
+    input wire [9:0] pixel_x,   // Current pixel x coordinate (0-639)
+    input wire [9:0] pixel_y,   // Current pixel y coordinate (0-479)
+    output reg [7:0] color_out  // Output color in RRRGGGBB format
+);
+
+    // Color definitions (RRRGGGBB format)
+    parameter [7:0] YELLOW = 8'b10110000;  // Bright green (R=0, G=7, B=0)
+    parameter [7:0] BLACK = 8'b00000000;  // Black for blanking areas
+    
+    // Screen boundaries
+    parameter [9:0] SCREEN_WIDTH  = 10'd640;
+    parameter [9:0] SCREEN_HEIGHT = 10'd480;
+    
+    always @(posedge clock) begin
+        if (reset) begin
+            color_out <= BLACK;
+        end
+        else begin
+            // Check if we're in the active display area
+            if (pixel_x < SCREEN_WIDTH && pixel_y < SCREEN_HEIGHT) begin
+                // Output green color for entire screen
+                color_out <= YELLOW;
+            end
+            else begin
+                // Output black for blanking areas
+                color_out <= BLACK;
+            end
+        end
+    end
+
+endmodule

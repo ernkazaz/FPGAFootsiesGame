@@ -1,0 +1,196 @@
+//=======================================================
+//  Menu Module - Cleaned for Instantiation
+//  VGA-based game menu with selection capability
+//=======================================================
+module Menu_Core(
+    // Clock inputs
+    input wire clk_50,              // 50MHz system clock
+    
+    // Reset and control
+    input wire reset_n,             // Active-low reset
+    input wire [9:0] switches,      // SW[9:0] - switch inputs
+    input wire [3:0] keys,          // KEY[3:0] - button inputs
+    
+    // VGA outputs
+    output wire vga_clk,
+    output wire vga_blank_n,
+    output wire vga_sync_n,
+    output wire vga_hs,
+    output wire vga_vs,
+    output wire [7:0] vga_r,
+    output wire [7:0] vga_g,
+    output wire [7:0] vga_b,
+    
+    // Optional LED outputs (for debugging)
+    output wire [9:0] leds
+);
+
+//=======================================================
+//  Internal signals
+//=======================================================
+// Clock and reset signals
+wire clk_25MHz;
+wire reset;
+
+// VGA interconnect signals
+wire [9:0] next_x, next_y;
+wire [7:0] bg_color;        // Background color from background module
+wire [7:0] shadow_color;    // Color after SHADOWBLOCK text overlay
+wire [7:0] single_color;    // Color after Singleplayer text overlay
+wire [7:0] final_color;     // Final color after Multi Player text overlay
+wire [7:0] start_color;     // Color after start text overlay
+wire [7:0] arrow_color;     // Color after arrow overlay
+
+//=======================================================
+//  Reset logic (convert active-low to active-high)
+//=======================================================
+assign reset = ~reset_n;
+
+//=======================================================
+//  Clock divider for 25MHz VGA clock
+//=======================================================
+Clock_Divider #(
+    .division(2),    // Divide by 2 to get 25MHz from 50MHz
+    .W(32)
+) clk_div_inst (
+    .clk_in(clk_50),
+    .clk_bypass(switches[1]),    // Use SW[1] to bypass clock divider
+    .button(keys[1]),            // Use KEY[1] as manual clock in bypass mode
+    .reset(reset),
+    .clk_out(clk_25MHz)
+);
+
+//=======================================================
+//  VGA Background Module
+//=======================================================
+vga_background bg_module (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .pixel_x(next_x),
+    .pixel_y(next_y),
+    .color_out(bg_color)
+);
+
+//=======================================================
+//  Text Display Shadow Module (SHADOWBLOCK)
+//=======================================================
+text_display_shadow text_module_shadow (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .pixel_x(next_x),
+    .pixel_y(next_y),
+    .bg_color(bg_color),
+    .color_out(shadow_color)
+);
+
+//=======================================================
+//  Text Display Single Module (Single Player)
+//=======================================================
+text_display_single text_module_single (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .pixel_x(next_x),
+    .pixel_y(next_y),
+    .bg_color(shadow_color),    // Use shadow text output as input
+    .color_out(single_color)
+);
+
+//=======================================================
+//  Text Display Multi Module (Multi Player)
+//=======================================================
+text_display_multi text_module_multi (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .pixel_x(next_x),
+    .pixel_y(next_y),
+    .bg_color(single_color),    // Use single text output as input
+    .color_out(final_color)
+);
+
+//=======================================================
+//  Selection Arrow Module  
+//=======================================================
+selection_arrow arrow_module (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .pixel_x(next_x),
+    .pixel_y(next_y),
+    .bg_color(final_color),      // Use multi text output as input
+    .selection(switches[0]),     // SW[0] - 0 for Single Player, 1 for Multi Player
+    .color_out(arrow_color)      // Output for arrow
+);
+
+//=======================================================
+//  Text Display Start Module (Press Any Button to Start)
+//=======================================================
+text_display_start text_module_start (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .pixel_x(next_x),
+    .pixel_y(next_y),
+    .bg_color(arrow_color),      // Use arrow output as input
+    .color_out(start_color)      // Output for start text
+);
+
+//=======================================================
+//  VGA Driver Module
+//=======================================================
+vga_driver vga_ctrl (
+    .clock(clk_25MHz),
+    .reset(reset),
+    .color_in(start_color),
+    .next_x(next_x),
+    .next_y(next_y),
+    .hsync(vga_hs),
+    .vsync(vga_vs),
+    .red(vga_r),
+    .green(vga_g),
+    .blue(vga_b),
+    .sync(vga_sync_n),
+    .clk(vga_clk),
+    .blank(vga_blank_n)
+);
+
+//=======================================================
+//  Optional LED assignments (for debugging/status)
+//=======================================================
+assign leds = switches; // Mirror switches to LEDs, or customize as needed
+
+endmodule
+
+//=======================================================
+//  Example Top-Level Module for Quartus
+//=======================================================
+module top_level(
+    //////////// CLOCK //////////
+    input           CLOCK_50,
+    
+    //////////// KEY //////////
+    input   [3:0]   KEY,
+    
+    //////////// SW //////////
+    input   [9:0]   SW,
+    
+    //////////// LED //////////
+    output  [9:0]   LEDR,
+    
+    //////////// VGA //////////
+    output          VGA_CLK,
+    output          VGA_BLANK_N,
+    output          VGA_SYNC_N,
+    output          VGA_HS,
+    output          VGA_VS,
+    output  [7:0]   VGA_R,
+    output  [7:0]   VGA_G,
+    output  [7:0]   VGA_B,
+    
+    //////////// HEX (unused but required by pin assignment) //////////
+    output  [6:0]   HEX0,
+    output  [6:0]   HEX1,
+    output  [6:0]   HEX2,
+    output  [6:0]   HEX3,
+    output  [6:0]   HEX4,
+    output  [6:0]   HEX5
+);
+
+endmodule

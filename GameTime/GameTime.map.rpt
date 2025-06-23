@@ -1,0 +1,808 @@
+Analysis & Synthesis report for GameTime
+Mon Jun 23 16:52:01 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state
+  9. State Machine - |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div
+ 14. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div|Counter:count_inst
+ 15. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|vga_driver:vga_inst
+ 16. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div
+ 17. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div|Counter:count_inst
+ 18. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp
+ 19. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:tens_display
+ 20. Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:ones_display
+ 21. Parameter Settings for Inferred Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0
+ 22. Parameter Settings for Inferred Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0
+ 23. Port Connectivity Checks: "GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:ones_display"
+ 24. Port Connectivity Checks: "GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:tens_display"
+ 25. Port Connectivity Checks: "GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div"
+ 26. Port Connectivity Checks: "GameTime_Core:gametime_inst"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Jun 23 16:52:01 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; GameTime                                       ;
+; Top-level Entity Name           ; GameTime                                       ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 115                                            ;
+; Total pins                      ; 135                                            ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; GameTime           ; GameTime           ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+; vga_driver.v                     ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/vga_driver.v                         ;         ;
+; GameTime.v                       ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v                           ;         ;
+; Counter.v                        ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/Counter.v                            ;         ;
+; Clock_Divider.v                  ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/Clock_Divider.v                      ;         ;
+; digit_display.v                  ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/digit_display.v                      ;         ;
+; counter_display.v                ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v                    ;         ;
+; counter_controller.v             ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/counter_controller.v                 ;         ;
+; GameTime_Core.v                  ; yes             ; User Verilog HDL File        ; C:/Users/husey/Desktop/Footsies/GameTime/GameTime_Core.v                      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc      ;         ;
+; db/lpm_divide_4am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/husey/Desktop/Footsies/GameTime/db/lpm_divide_4am.tdf                ;         ;
+; db/sign_div_unsign_akh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/husey/Desktop/Footsies/GameTime/db/sign_div_unsign_akh.tdf           ;         ;
+; db/alt_u_div_qse.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/husey/Desktop/Footsies/GameTime/db/alt_u_div_qse.tdf                 ;         ;
+; db/lpm_divide_72m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/husey/Desktop/Footsies/GameTime/db/lpm_divide_72m.tdf                ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 188            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 323            ;
+;     -- 7 input functions                    ; 2              ;
+;     -- 6 input functions                    ; 50             ;
+;     -- 5 input functions                    ; 35             ;
+;     -- 4 input functions                    ; 33             ;
+;     -- <=3 input functions                  ; 203            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 115            ;
+;                                             ;                ;
+; I/O pins                                    ; 135            ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 69             ;
+; Total fan-out                               ; 1622           ;
+; Average fan-out                             ; 2.18           ;
++---------------------------------------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                             ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                ; Entity Name         ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |GameTime                                    ; 323 (0)             ; 115 (0)                   ; 0                 ; 0          ; 135  ; 0            ; |GameTime                                                                                                                                                          ; GameTime            ; work         ;
+;    |GameTime_Core:gametime_inst|             ; 323 (0)             ; 115 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst                                                                                                                              ; GameTime_Core       ; work         ;
+;       |Clock_Divider:vga_clk_div|            ; 42 (10)             ; 35 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div                                                                                                    ; Clock_Divider       ; work         ;
+;          |Counter:count_inst|                ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div|Counter:count_inst                                                                                 ; Counter             ; work         ;
+;       |counter_controller:counter_ctrl|      ; 52 (11)             ; 41 (7)                    ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_controller:counter_ctrl                                                                                              ; counter_controller  ; work         ;
+;          |Clock_Divider:clk_div|             ; 41 (9)              ; 34 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div                                                                        ; Clock_Divider       ; work         ;
+;             |Counter:count_inst|             ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div|Counter:count_inst                                                     ; Counter             ; work         ;
+;       |counter_display:counter_disp|         ; 169 (1)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp                                                                                                 ; counter_display     ; work         ;
+;          |digit_display:ones_display|        ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:ones_display                                                                      ; digit_display       ; work         ;
+;          |digit_display:tens_display|        ; 54 (54)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:tens_display                                                                      ; digit_display       ; work         ;
+;          |lpm_divide:Div0|                   ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;             |lpm_divide_4am:auto_generated|  ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0|lpm_divide_4am:auto_generated                                                   ; lpm_divide_4am      ; work         ;
+;                |sign_div_unsign_akh:divider| ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0|lpm_divide_4am:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
+;                   |alt_u_div_qse:divider|    ; 38 (38)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0|lpm_divide_4am:auto_generated|sign_div_unsign_akh:divider|alt_u_div_qse:divider ; alt_u_div_qse       ; work         ;
+;          |lpm_divide:Mod0|                   ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;             |lpm_divide_72m:auto_generated|  ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0|lpm_divide_72m:auto_generated                                                   ; lpm_divide_72m      ; work         ;
+;                |sign_div_unsign_akh:divider| ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0|lpm_divide_72m:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
+;                   |alt_u_div_qse:divider|    ; 44 (44)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0|lpm_divide_72m:auto_generated|sign_div_unsign_akh:divider|alt_u_div_qse:divider ; alt_u_div_qse       ; work         ;
+;       |vga_driver:vga_inst|                  ; 60 (60)             ; 39 (39)                   ; 0                 ; 0          ; 0    ; 0            ; |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst                                                                                                          ; vga_driver          ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state                                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; v_state.V_BACK_STATE ; v_state.V_PULSE_STATE ; v_state.V_FRONT_STATE ; v_state.V_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; v_state.V_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; v_state.V_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; v_state.V_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; v_state.V_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state                                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; h_state.H_BACK_STATE ; h_state.H_PULSE_STATE ; h_state.H_FRONT_STATE ; h_state.H_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; h_state.H_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; h_state.H_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; h_state.H_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; h_state.H_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                     ;
++-----------------------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                                 ; Reason for Removal                     ;
++-----------------------------------------------------------------------------------------------+----------------------------------------+
+; GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div|control[1]  ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|red_reg[0]                                    ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|green_reg[0..4]                               ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|blue_reg[0..5]                                ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|red_reg[1..4]                                 ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div|control[1]                              ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div|prev_bypass ; Stuck at GND due to stuck port data_in ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~5                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~6                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~7                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~8                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~9                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~10                                    ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~11                                    ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|v_state~12                                    ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~5                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~6                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~7                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~8                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~9                                     ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~10                                    ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~11                                    ; Lost fanout                            ;
+; GameTime_Core:gametime_inst|vga_driver:vga_inst|h_state~12                                    ; Lost fanout                            ;
+; Total Number of Removed Registers = 35                                                        ;                                        ;
++-----------------------------------------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 115   ;
+; Number of registers using Synchronous Clear  ; 94    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 27    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------+
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst|v_counter[3] ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |GameTime|GameTime_Core:gametime_inst|vga_driver:vga_inst|h_counter[4] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div ;
++----------------+-------+---------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                      ;
++----------------+-------+---------------------------------------------------------------------------+
+; division       ; 2     ; Signed Integer                                                            ;
+; W              ; 32    ; Signed Integer                                                            ;
++----------------+-------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div|Counter:count_inst ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                         ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; W              ; 32    ; Signed Integer                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|vga_driver:vga_inst ;
++----------------+------------+----------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                           ;
++----------------+------------+----------------------------------------------------------------+
+; H_ACTIVE       ; 1001111111 ; Unsigned Binary                                                ;
+; H_FRONT        ; 0000001111 ; Unsigned Binary                                                ;
+; H_PULSE        ; 0001011111 ; Unsigned Binary                                                ;
+; H_BACK         ; 0000101111 ; Unsigned Binary                                                ;
+; V_ACTIVE       ; 0111011111 ; Unsigned Binary                                                ;
+; V_FRONT        ; 0000001001 ; Unsigned Binary                                                ;
+; V_PULSE        ; 0000000001 ; Unsigned Binary                                                ;
+; V_BACK         ; 0000100000 ; Unsigned Binary                                                ;
+; LOW            ; 0          ; Unsigned Binary                                                ;
+; HIGH           ; 1          ; Unsigned Binary                                                ;
+; H_ACTIVE_STATE ; 00000000   ; Unsigned Binary                                                ;
+; H_FRONT_STATE  ; 00000001   ; Unsigned Binary                                                ;
+; H_PULSE_STATE  ; 00000010   ; Unsigned Binary                                                ;
+; H_BACK_STATE   ; 00000011   ; Unsigned Binary                                                ;
+; V_ACTIVE_STATE ; 00000000   ; Unsigned Binary                                                ;
+; V_FRONT_STATE  ; 00000001   ; Unsigned Binary                                                ;
+; V_PULSE_STATE  ; 00000010   ; Unsigned Binary                                                ;
+; V_BACK_STATE   ; 00000011   ; Unsigned Binary                                                ;
++----------------+------------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div ;
++----------------+----------+----------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                                                               ;
++----------------+----------+----------------------------------------------------------------------------------------------------+
+; division       ; 50000000 ; Signed Integer                                                                                     ;
+; W              ; 32       ; Signed Integer                                                                                     ;
++----------------+----------+----------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div|Counter:count_inst ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                                     ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------+
+; W              ; 32    ; Signed Integer                                                                                                           ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp ;
++----------------+------------+-------------------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                                    ;
++----------------+------------+-------------------------------------------------------------------------+
+; DIGIT_X_TENS   ; 0100110110 ; Unsigned Binary                                                         ;
+; DIGIT_X_ONES   ; 0101001010 ; Unsigned Binary                                                         ;
+; DIGIT_Y        ; 0000110010 ; Unsigned Binary                                                         ;
++----------------+------------+-------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:tens_display ;
++----------------+-------+---------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------------+
+; DIGIT_WIDTH    ; 8     ; Signed Integer                                                                                          ;
+; DIGIT_HEIGHT   ; 12    ; Signed Integer                                                                                          ;
++----------------+-------+---------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:ones_display ;
++----------------+-------+---------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------------+
+; DIGIT_WIDTH    ; 8     ; Signed Integer                                                                                          ;
+; DIGIT_HEIGHT   ; 12    ; Signed Integer                                                                                          ;
++----------------+-------+---------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0 ;
++------------------------+----------------+---------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                            ;
++------------------------+----------------+---------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                         ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                                         ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                         ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                         ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                         ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                         ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                         ;
+; CBXI_PARAMETER         ; lpm_divide_4am ; Untyped                                                                         ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                         ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                         ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                      ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                    ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                    ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                  ;
++------------------------+----------------+---------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0 ;
++------------------------+----------------+---------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                            ;
++------------------------+----------------+---------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                         ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                                         ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                         ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                         ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                         ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                         ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                         ;
+; CBXI_PARAMETER         ; lpm_divide_72m ; Untyped                                                                         ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                         ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                         ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                      ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                    ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                    ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                  ;
++------------------------+----------------+---------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:ones_display" ;
++---------------+-------+----------+------------------------------------------------------------------------------+
+; Port          ; Type  ; Severity ; Details                                                                      ;
++---------------+-------+----------+------------------------------------------------------------------------------+
+; digit_x[5..4] ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[9]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[8]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[7]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[6]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[3]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[2]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[1]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[0]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_y[5..4] ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_y[9..6] ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_y[3..2] ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_y[1]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_y[0]    ; Input ; Info     ; Stuck at GND                                                                 ;
++---------------+-------+----------+------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:tens_display" ;
++---------------+-------+----------+------------------------------------------------------------------------------+
+; Port          ; Type  ; Severity ; Details                                                                      ;
++---------------+-------+----------+------------------------------------------------------------------------------+
+; digit_x[5..4] ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[2..1] ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[7..6] ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[9]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[8]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_x[3]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_x[0]    ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_y[5..4] ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_y[9..6] ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_y[3..2] ; Input ; Info     ; Stuck at GND                                                                 ;
+; digit_y[1]    ; Input ; Info     ; Stuck at VCC                                                                 ;
+; digit_y[0]    ; Input ; Info     ; Stuck at GND                                                                 ;
++---------------+-------+----------+------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div" ;
++------------+-------+----------+-------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                       ;
++------------+-------+----------+-------------------------------------------------------------------------------+
+; clk_bypass ; Input ; Info     ; Stuck at GND                                                                  ;
+; button     ; Input ; Info     ; Stuck at GND                                                                  ;
++------------+-------+----------+-------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "GameTime_Core:gametime_inst"                                                                                                          ;
++-------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                        ;
++-------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
+; timer_value ; Output ; Warning  ; Output or bidir port (7 bits) is wider than the port expression (1 bits) it drives; bit(s) "timer_value[6..1]" have no fanouts ;
+; timer_value ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                            ;
++-------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 115                         ;
+;     ENA               ; 10                          ;
+;     ENA CLR           ; 7                           ;
+;     ENA SCLR          ; 10                          ;
+;     SCLR              ; 84                          ;
+;     plain             ; 4                           ;
+; arriav_io_obuf        ; 36                          ;
+; arriav_lcell_comb     ; 324                         ;
+;     arith             ; 133                         ;
+;         0 data inputs ; 12                          ;
+;         1 data inputs ; 97                          ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 4                           ;
+;     extend            ; 2                           ;
+;         7 data inputs ; 2                           ;
+;     normal            ; 179                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 29                          ;
+;         5 data inputs ; 35                          ;
+;         6 data inputs ; 50                          ;
+;     shared            ; 10                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 8                           ;
+; boundary_port         ; 135                         ;
+;                       ;                             ;
+; Max LUT depth         ; 10.50                       ;
+; Average LUT depth     ; 4.63                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Mon Jun 23 16:51:51 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off GameTime -c GameTime
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file vga_driver.v
+    Info (12023): Found entity 1: vga_driver File: C:/Users/husey/Desktop/Footsies/GameTime/vga_driver.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file gametime.v
+    Info (12023): Found entity 1: GameTime File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file counter.v
+    Info (12023): Found entity 1: Counter File: C:/Users/husey/Desktop/Footsies/GameTime/Counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
+    Info (12023): Found entity 1: Clock_Divider File: C:/Users/husey/Desktop/Footsies/GameTime/Clock_Divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file digit_display.v
+    Info (12023): Found entity 1: digit_display File: C:/Users/husey/Desktop/Footsies/GameTime/digit_display.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file counter_display.v
+    Info (12023): Found entity 1: counter_display File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file counter_controller.v
+    Info (12023): Found entity 1: counter_controller File: C:/Users/husey/Desktop/Footsies/GameTime/counter_controller.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file gametime_core.v
+    Info (12023): Found entity 1: GameTime_Core File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime_Core.v Line: 5
+Warning (10236): Verilog HDL Implicit Net warning at GameTime.v(66): created implicit net for "game_timer_value" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 66
+Info (12127): Elaborating entity "GameTime" for the top level hierarchy
+Warning (10034): Output port "HEX0" at GameTime.v(8) has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+Warning (10034): Output port "HEX1" at GameTime.v(9) has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+Warning (10034): Output port "HEX2" at GameTime.v(10) has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+Warning (10034): Output port "HEX3" at GameTime.v(11) has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+Warning (10034): Output port "HEX4" at GameTime.v(12) has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+Warning (10034): Output port "HEX5" at GameTime.v(13) has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+Info (12128): Elaborating entity "GameTime_Core" for hierarchy "GameTime_Core:gametime_inst" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 67
+Info (12128): Elaborating entity "Clock_Divider" for hierarchy "GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime_Core.v Line: 66
+Info (12128): Elaborating entity "Counter" for hierarchy "GameTime_Core:gametime_inst|Clock_Divider:vga_clk_div|Counter:count_inst" File: C:/Users/husey/Desktop/Footsies/GameTime/Clock_Divider.v Line: 18
+Info (12128): Elaborating entity "vga_driver" for hierarchy "GameTime_Core:gametime_inst|vga_driver:vga_inst" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime_Core.v Line: 85
+Info (12128): Elaborating entity "counter_controller" for hierarchy "GameTime_Core:gametime_inst|counter_controller:counter_ctrl" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime_Core.v Line: 95
+Warning (10230): Verilog HDL assignment warning at counter_controller.v(27): truncated value with size 32 to match size of target (7) File: C:/Users/husey/Desktop/Footsies/GameTime/counter_controller.v Line: 27
+Info (12128): Elaborating entity "Clock_Divider" for hierarchy "GameTime_Core:gametime_inst|counter_controller:counter_ctrl|Clock_Divider:clk_div" File: C:/Users/husey/Desktop/Footsies/GameTime/counter_controller.v Line: 17
+Info (12128): Elaborating entity "counter_display" for hierarchy "GameTime_Core:gametime_inst|counter_display:counter_disp" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime_Core.v Line: 105
+Warning (10230): Verilog HDL assignment warning at counter_display.v(15): truncated value with size 32 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 15
+Warning (10230): Verilog HDL assignment warning at counter_display.v(16): truncated value with size 32 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 16
+Info (12128): Elaborating entity "digit_display" for hierarchy "GameTime_Core:gametime_inst|counter_display:counter_disp|digit_display:tens_display" File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 29
+Warning (10230): Verilog HDL assignment warning at digit_display.v(21): truncated value with size 10 to match size of target (3) File: C:/Users/husey/Desktop/Footsies/GameTime/digit_display.v Line: 21
+Warning (10230): Verilog HDL assignment warning at digit_display.v(22): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/GameTime/digit_display.v Line: 22
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "GameTime_Core:gametime_inst|counter_display:counter_disp|Div0" File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 15
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "GameTime_Core:gametime_inst|counter_display:counter_disp|Mod0" File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 16
+Info (12130): Elaborated megafunction instantiation "GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0" File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 15
+Info (12133): Instantiated megafunction "GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Div0" with the following parameter: File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 15
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_4am.tdf
+    Info (12023): Found entity 1: lpm_divide_4am File: C:/Users/husey/Desktop/Footsies/GameTime/db/lpm_divide_4am.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_akh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_akh File: C:/Users/husey/Desktop/Footsies/GameTime/db/sign_div_unsign_akh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_qse.tdf
+    Info (12023): Found entity 1: alt_u_div_qse File: C:/Users/husey/Desktop/Footsies/GameTime/db/alt_u_div_qse.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0" File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 16
+Info (12133): Instantiated megafunction "GameTime_Core:gametime_inst|counter_display:counter_disp|lpm_divide:Mod0" with the following parameter: File: C:/Users/husey/Desktop/Footsies/GameTime/counter_display.v Line: 16
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_72m.tdf
+    Info (12023): Found entity 1: lpm_divide_72m File: C:/Users/husey/Desktop/Footsies/GameTime/db/lpm_divide_72m.tdf Line: 25
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "GPIO[0]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[1]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[2]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[3]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[4]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[5]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[6]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[7]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[8]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[9]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[10]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[11]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[12]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[13]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[14]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[15]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[16]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[17]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[18]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[19]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[20]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[21]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[22]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[23]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[24]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[25]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[26]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[27]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[28]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[29]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[30]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[31]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[32]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[33]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[34]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+    Warning (13040): bidirectional pin "GPIO[35]" has no driver File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 31
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 8
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 9
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 10
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 11
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 12
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 13
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 17
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 17
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 17
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 22
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 22
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 22
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 22
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 22
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 22
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 24
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 24
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 24
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 24
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 24
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 26
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 26
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 26
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 26
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 26
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 27
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 13 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 3
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 4
+    Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 5
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 15
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 15
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/husey/Desktop/Footsies/GameTime/GameTime.v Line: 19
+Info (21057): Implemented 466 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 81 output pins
+    Info (21060): Implemented 36 bidirectional pins
+    Info (21061): Implemented 331 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 128 warnings
+    Info: Peak virtual memory: 4844 megabytes
+    Info: Processing ended: Mon Jun 23 16:52:01 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:22
+
+

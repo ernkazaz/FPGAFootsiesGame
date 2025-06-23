@@ -1,0 +1,721 @@
+Analysis & Synthesis report for Menu
+Mon Jun 23 16:26:15 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state
+  9. State Machine - |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|Clock_Divider:clk_div_inst
+ 15. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|Clock_Divider:clk_div_inst|Counter:count_inst
+ 16. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|vga_background:bg_module
+ 17. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_shadow:text_module_shadow
+ 18. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_single:text_module_single
+ 19. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_multi:text_module_multi
+ 20. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|selection_arrow:arrow_module
+ 21. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_start:text_module_start
+ 22. Parameter Settings for User Entity Instance: Menu_Core:menu_inst|vga_driver:vga_ctrl
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Jun 23 16:26:15 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; Menu                                           ;
+; Top-level Entity Name           ; Menu                                           ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 82                                             ;
+; Total pins                      ; 99                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; Menu               ; Menu               ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                             ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                               ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
+; text_display_shadow.v            ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v ;         ;
+; vga_driver.v                     ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/vga_driver.v          ;         ;
+; Menu.v                           ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/Menu.v                ;         ;
+; Counter.v                        ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/Counter.v             ;         ;
+; Clock_Divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/Clock_Divider.v       ;         ;
+; vga_background.v                 ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/vga_background.v      ;         ;
+; text_display_single.v            ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v ;         ;
+; text_display_multi.v             ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v  ;         ;
+; selection_arrow.v                ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v     ;         ;
+; text_display_start.v             ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/text_display_start.v  ;         ;
+; Menu_Core.v                      ; yes             ; User Verilog HDL File  ; C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v           ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                          ;
++---------------------------------------------+--------------------------------------------------------+
+; Resource                                    ; Usage                                                  ;
++---------------------------------------------+--------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 252                                                    ;
+;                                             ;                                                        ;
+; Combinational ALUT usage for logic          ; 359                                                    ;
+;     -- 7 input functions                    ; 1                                                      ;
+;     -- 6 input functions                    ; 143                                                    ;
+;     -- 5 input functions                    ; 81                                                     ;
+;     -- 4 input functions                    ; 41                                                     ;
+;     -- <=3 input functions                  ; 93                                                     ;
+;                                             ;                                                        ;
+; Dedicated logic registers                   ; 82                                                     ;
+;                                             ;                                                        ;
+; I/O pins                                    ; 99                                                     ;
+;                                             ;                                                        ;
+; Total DSP Blocks                            ; 0                                                      ;
+;                                             ;                                                        ;
+; Maximum fan-out node                        ; Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out ;
+; Maximum fan-out                             ; 49                                                     ;
+; Total fan-out                               ; 2007                                                   ;
+; Average fan-out                             ; 3.14                                                   ;
++---------------------------------------------+--------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                    ;
++------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                     ; Entity Name         ; Library Name ;
++------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------+---------------------+--------------+
+; |Menu                                          ; 359 (0)             ; 82 (0)                    ; 0                 ; 0          ; 99   ; 0            ; |Menu                                                                   ; Menu                ; work         ;
+;    |Menu_Core:menu_inst|                       ; 359 (0)             ; 82 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst                                               ; Menu_Core           ; work         ;
+;       |Clock_Divider:clk_div_inst|             ; 42 (10)             ; 35 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|Clock_Divider:clk_div_inst                    ; Clock_Divider       ; work         ;
+;          |Counter:count_inst|                  ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|Counter:count_inst ; Counter             ; work         ;
+;       |selection_arrow:arrow_module|           ; 26 (26)             ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|selection_arrow:arrow_module                  ; selection_arrow     ; work         ;
+;       |text_display_multi:text_module_multi|   ; 55 (55)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|text_display_multi:text_module_multi          ; text_display_multi  ; work         ;
+;       |text_display_shadow:text_module_shadow| ; 50 (50)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|text_display_shadow:text_module_shadow        ; text_display_shadow ; work         ;
+;       |text_display_single:text_module_single| ; 47 (47)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|text_display_single:text_module_single        ; text_display_single ; work         ;
+;       |text_display_start:text_module_start|   ; 78 (78)             ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|text_display_start:text_module_start          ; text_display_start  ; work         ;
+;       |vga_background:bg_module|               ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|vga_background:bg_module                      ; vga_background      ; work         ;
+;       |vga_driver:vga_ctrl|                    ; 59 (59)             ; 39 (39)                   ; 0                 ; 0          ; 0    ; 0            ; |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl                           ; vga_driver          ; work         ;
++------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state                                                  ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; v_state.V_BACK_STATE ; v_state.V_PULSE_STATE ; v_state.V_FRONT_STATE ; v_state.V_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; v_state.V_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; v_state.V_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; v_state.V_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; v_state.V_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state                                                  ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; Name                   ; h_state.H_BACK_STATE ; h_state.H_PULSE_STATE ; h_state.H_FRONT_STATE ; h_state.H_ACTIVE_STATE ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+; h_state.H_ACTIVE_STATE ; 0                    ; 0                     ; 0                     ; 0                      ;
+; h_state.H_FRONT_STATE  ; 0                    ; 0                     ; 1                     ; 1                      ;
+; h_state.H_PULSE_STATE  ; 0                    ; 1                     ; 0                     ; 1                      ;
+; h_state.H_BACK_STATE   ; 1                    ; 0                     ; 0                     ; 1                      ;
++------------------------+----------------------+-----------------------+-----------------------+------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                 ;
++------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+; Register name                                                                ; Reason for Removal                                                                  ;
++------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|red_reg[0]                           ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|green_reg[0..4]                      ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|blue_reg[0..5]                       ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|red_reg[1..4]                        ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[0..3,6]               ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|Clock_Divider:clk_div_inst|control[1]                    ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[0..3,6] ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[0..3,6] ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[0..3,6]   ; Stuck at GND due to stuck port data_in                                              ;
+; Menu_Core:menu_inst|text_display_start:text_module_start|color_out[1..3,6]   ; Merged with Menu_Core:menu_inst|text_display_start:text_module_start|color_out[0]   ;
+; Menu_Core:menu_inst|text_display_start:text_module_start|color_out[5,7]      ; Merged with Menu_Core:menu_inst|text_display_start:text_module_start|color_out[4]   ;
+; Menu_Core:menu_inst|selection_arrow:arrow_module|color_out[1..3,6]           ; Merged with Menu_Core:menu_inst|selection_arrow:arrow_module|color_out[0]           ;
+; Menu_Core:menu_inst|selection_arrow:arrow_module|color_out[5,7]              ; Merged with Menu_Core:menu_inst|selection_arrow:arrow_module|color_out[4]           ;
+; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[5,7]      ; Merged with Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[4]   ;
+; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[5,7]    ; Merged with Menu_Core:menu_inst|text_display_single:text_module_single|color_out[4] ;
+; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[5,7]    ; Merged with Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[4] ;
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[5,7]                  ; Merged with Menu_Core:menu_inst|vga_background:bg_module|color_out[4]               ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~5                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~6                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~7                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~8                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~9                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~10                           ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~11                           ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|v_state~12                           ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~5                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~6                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~7                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~8                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~9                            ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~10                           ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~11                           ; Lost fanout                                                                         ;
+; Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~12                           ; Lost fanout                                                                         ;
+; Total Number of Removed Registers = 73                                       ;                                                                                     ;
++------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                      ;
++-----------------------------------------------------------+---------------------------+--------------------------------------------------------------------------+
+; Register name                                             ; Reason for Removal        ; Registers Removed due to This Register                                   ;
++-----------------------------------------------------------+---------------------------+--------------------------------------------------------------------------+
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[0] ; Stuck at GND              ; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[0], ;
+;                                                           ; due to stuck port data_in ; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[0], ;
+;                                                           ;                           ; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[0]    ;
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[1] ; Stuck at GND              ; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[1], ;
+;                                                           ; due to stuck port data_in ; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[1], ;
+;                                                           ;                           ; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[1]    ;
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[2] ; Stuck at GND              ; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[2], ;
+;                                                           ; due to stuck port data_in ; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[2], ;
+;                                                           ;                           ; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[2]    ;
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[3] ; Stuck at GND              ; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[3], ;
+;                                                           ; due to stuck port data_in ; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[3], ;
+;                                                           ;                           ; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[3]    ;
+; Menu_Core:menu_inst|vga_background:bg_module|color_out[6] ; Stuck at GND              ; Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[6], ;
+;                                                           ; due to stuck port data_in ; Menu_Core:menu_inst|text_display_single:text_module_single|color_out[6], ;
+;                                                           ;                           ; Menu_Core:menu_inst|text_display_multi:text_module_multi|color_out[6]    ;
++-----------------------------------------------------------+---------------------------+--------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 82    ;
+; Number of registers using Synchronous Clear  ; 66    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Menu|Menu_Core:menu_inst|text_display_start:text_module_start|color_out[0] ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|v_counter[8]                  ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[8]                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Menu|Menu_Core:menu_inst|vga_driver:vga_ctrl|green_reg                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|Clock_Divider:clk_div_inst ;
++----------------+-------+--------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                               ;
++----------------+-------+--------------------------------------------------------------------+
+; division       ; 2     ; Signed Integer                                                     ;
+; W              ; 32    ; Signed Integer                                                     ;
++----------------+-------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|Clock_Divider:clk_div_inst|Counter:count_inst ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; W              ; 32    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|vga_background:bg_module ;
++----------------+------------+-------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                        ;
++----------------+------------+-------------------------------------------------------------+
+; YELLOW         ; 10110000   ; Unsigned Binary                                             ;
+; BLACK          ; 00000000   ; Unsigned Binary                                             ;
+; SCREEN_WIDTH   ; 1010000000 ; Unsigned Binary                                             ;
+; SCREEN_HEIGHT  ; 0111100000 ; Unsigned Binary                                             ;
++----------------+------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_shadow:text_module_shadow ;
++----------------+------------+---------------------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                                      ;
++----------------+------------+---------------------------------------------------------------------------+
+; CHAR_WIDTH     ; 0000010000 ; Unsigned Binary                                                           ;
+; CHAR_HEIGHT    ; 0000100000 ; Unsigned Binary                                                           ;
+; TEXT_LENGTH    ; 0000001011 ; Unsigned Binary                                                           ;
+; SCREEN_WIDTH   ; 1010000000 ; Unsigned Binary                                                           ;
+; SCREEN_HEIGHT  ; 0111100000 ; Unsigned Binary                                                           ;
+; TEXT_WIDTH     ; 0010110000 ; Unsigned Binary                                                           ;
+; START_X        ; 0011101000 ; Unsigned Binary                                                           ;
+; START_Y        ; 0010100000 ; Unsigned Binary                                                           ;
+; TEXT_COLOR     ; 00000000   ; Unsigned Binary                                                           ;
+; TRANSPARENT    ; 00000000   ; Unsigned Binary                                                           ;
++----------------+------------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_single:text_module_single ;
++----------------+------------+---------------------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                                      ;
++----------------+------------+---------------------------------------------------------------------------+
+; CHAR_WIDTH     ; 0000001000 ; Unsigned Binary                                                           ;
+; CHAR_HEIGHT    ; 0000010000 ; Unsigned Binary                                                           ;
+; TEXT_LENGTH    ; 0000001101 ; Unsigned Binary                                                           ;
+; SCREEN_WIDTH   ; 1010000000 ; Unsigned Binary                                                           ;
+; SCREEN_HEIGHT  ; 0111100000 ; Unsigned Binary                                                           ;
+; TEXT_WIDTH     ; 0001101000 ; Unsigned Binary                                                           ;
+; START_X        ; 0100001100 ; Unsigned Binary                                                           ;
+; START_Y        ; 0100011000 ; Unsigned Binary                                                           ;
+; TEXT_COLOR     ; 00000000   ; Unsigned Binary                                                           ;
+; TRANSPARENT    ; 00000000   ; Unsigned Binary                                                           ;
++----------------+------------+---------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_multi:text_module_multi ;
++----------------+------------+-------------------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                                    ;
++----------------+------------+-------------------------------------------------------------------------+
+; CHAR_WIDTH     ; 0000001000 ; Unsigned Binary                                                         ;
+; CHAR_HEIGHT    ; 0000010000 ; Unsigned Binary                                                         ;
+; TEXT_LENGTH    ; 0000001101 ; Unsigned Binary                                                         ;
+; SCREEN_WIDTH   ; 1010000000 ; Unsigned Binary                                                         ;
+; SCREEN_HEIGHT  ; 0111100000 ; Unsigned Binary                                                         ;
+; TEXT_WIDTH     ; 0001101000 ; Unsigned Binary                                                         ;
+; START_X        ; 0100001100 ; Unsigned Binary                                                         ;
+; START_Y        ; 0100110001 ; Unsigned Binary                                                         ;
+; TEXT_COLOR     ; 00000000   ; Unsigned Binary                                                         ;
+; TRANSPARENT    ; 00000000   ; Unsigned Binary                                                         ;
++----------------+------------+-------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|selection_arrow:arrow_module ;
++----------------+------------+-----------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                            ;
++----------------+------------+-----------------------------------------------------------------+
+; ARROW_WIDTH    ; 0000010100 ; Unsigned Binary                                                 ;
+; ARROW_HEIGHT   ; 0000001100 ; Unsigned Binary                                                 ;
+; SCREEN_WIDTH   ; 1010000000 ; Unsigned Binary                                                 ;
+; SCREEN_HEIGHT  ; 0111100000 ; Unsigned Binary                                                 ;
+; TEXT_LENGTH    ; 0000001101 ; Unsigned Binary                                                 ;
+; CHAR_WIDTH     ; 0000001000 ; Unsigned Binary                                                 ;
+; TEXT_WIDTH     ; 0001101000 ; Unsigned Binary                                                 ;
+; SINGLE_START_X ; 0100001100 ; Unsigned Binary                                                 ;
+; SINGLE_START_Y ; 0100011000 ; Unsigned Binary                                                 ;
+; MULTI_START_X  ; 0100001100 ; Unsigned Binary                                                 ;
+; MULTI_START_Y  ; 0100110001 ; Unsigned Binary                                                 ;
+; ARROW_OFFSET_X ; 0000011001 ; Unsigned Binary                                                 ;
+; ARROW_OFFSET_Y ; 0000000010 ; Unsigned Binary                                                 ;
+; ARROW_COLOR    ; 11111111   ; Unsigned Binary                                                 ;
++----------------+------------+-----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|text_display_start:text_module_start ;
++----------------+------------+-------------------------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                                    ;
++----------------+------------+-------------------------------------------------------------------------+
+; CHAR_WIDTH     ; 0000001000 ; Unsigned Binary                                                         ;
+; CHAR_HEIGHT    ; 0000010000 ; Unsigned Binary                                                         ;
+; TEXT_LENGTH    ; 0000011001 ; Unsigned Binary                                                         ;
+; SCREEN_WIDTH   ; 1010000000 ; Unsigned Binary                                                         ;
+; SCREEN_HEIGHT  ; 0111100000 ; Unsigned Binary                                                         ;
+; TEXT_WIDTH     ; 0011001000 ; Unsigned Binary                                                         ;
+; START_X        ; 0011011100 ; Unsigned Binary                                                         ;
+; START_Y        ; 0110100100 ; Unsigned Binary                                                         ;
+; TEXT_COLOR     ; 00000000   ; Unsigned Binary                                                         ;
+; TRANSPARENT    ; 00000000   ; Unsigned Binary                                                         ;
++----------------+------------+-------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Menu_Core:menu_inst|vga_driver:vga_ctrl ;
++----------------+------------+--------------------------------------------------------+
+; Parameter Name ; Value      ; Type                                                   ;
++----------------+------------+--------------------------------------------------------+
+; H_ACTIVE       ; 1001111111 ; Unsigned Binary                                        ;
+; H_FRONT        ; 0000001111 ; Unsigned Binary                                        ;
+; H_PULSE        ; 0001011111 ; Unsigned Binary                                        ;
+; H_BACK         ; 0000101111 ; Unsigned Binary                                        ;
+; V_ACTIVE       ; 0111011111 ; Unsigned Binary                                        ;
+; V_FRONT        ; 0000001001 ; Unsigned Binary                                        ;
+; V_PULSE        ; 0000000001 ; Unsigned Binary                                        ;
+; V_BACK         ; 0000100000 ; Unsigned Binary                                        ;
+; LOW            ; 0          ; Unsigned Binary                                        ;
+; HIGH           ; 1          ; Unsigned Binary                                        ;
+; H_ACTIVE_STATE ; 00000000   ; Unsigned Binary                                        ;
+; H_FRONT_STATE  ; 00000001   ; Unsigned Binary                                        ;
+; H_PULSE_STATE  ; 00000010   ; Unsigned Binary                                        ;
+; H_BACK_STATE   ; 00000011   ; Unsigned Binary                                        ;
+; V_ACTIVE_STATE ; 00000000   ; Unsigned Binary                                        ;
+; V_FRONT_STATE  ; 00000001   ; Unsigned Binary                                        ;
+; V_PULSE_STATE  ; 00000010   ; Unsigned Binary                                        ;
+; V_BACK_STATE   ; 00000011   ; Unsigned Binary                                        ;
++----------------+------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 82                          ;
+;     ENA               ; 10                          ;
+;     ENA SCLR          ; 10                          ;
+;     SCLR              ; 56                          ;
+;     plain             ; 6                           ;
+; arriav_lcell_comb     ; 360                         ;
+;     arith             ; 52                          ;
+;         1 data inputs ; 52                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 307                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 22                          ;
+;         3 data inputs ; 19                          ;
+;         4 data inputs ; 41                          ;
+;         5 data inputs ; 81                          ;
+;         6 data inputs ; 143                         ;
+; boundary_port         ; 99                          ;
+;                       ;                             ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 4.46                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Mon Jun 23 16:26:04 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Menu -c Menu
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file text_display_shadow.v
+    Info (12023): Found entity 1: text_display_shadow File: C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga_driver.v
+    Info (12023): Found entity 1: vga_driver File: C:/Users/husey/Desktop/Footsies/Menu/vga_driver.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file menu.v
+    Info (12023): Found entity 1: Menu File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file counter.v
+    Info (12023): Found entity 1: Counter File: C:/Users/husey/Desktop/Footsies/Menu/Counter.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
+    Info (12023): Found entity 1: Clock_Divider File: C:/Users/husey/Desktop/Footsies/Menu/Clock_Divider.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga_background.v
+    Info (12023): Found entity 1: vga_background File: C:/Users/husey/Desktop/Footsies/Menu/vga_background.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file text_display_single.v
+    Info (12023): Found entity 1: text_display_single File: C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file text_display_multi.v
+    Info (12023): Found entity 1: text_display_multi File: C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file selection_arrow.v
+    Info (12023): Found entity 1: selection_arrow File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file text_display_start.v
+    Info (12023): Found entity 1: text_display_start File: C:/Users/husey/Desktop/Footsies/Menu/text_display_start.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file menu_core.v
+    Info (12023): Found entity 1: Menu_Core File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 5
+    Info (12023): Found entity 2: top_level File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 164
+Info (12127): Elaborating entity "Menu" for the top level hierarchy
+Warning (10034): Output port "HEX0" at Menu.v(11) has no driver File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+Warning (10034): Output port "HEX1" at Menu.v(12) has no driver File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+Warning (10034): Output port "HEX2" at Menu.v(13) has no driver File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+Warning (10034): Output port "HEX3" at Menu.v(14) has no driver File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+Warning (10034): Output port "HEX4" at Menu.v(15) has no driver File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+Warning (10034): Output port "HEX5" at Menu.v(16) has no driver File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+Info (12128): Elaborating entity "Menu_Core" for hierarchy "Menu_Core:menu_inst" File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 62
+Info (12128): Elaborating entity "Clock_Divider" for hierarchy "Menu_Core:menu_inst|Clock_Divider:clk_div_inst" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 61
+Info (12128): Elaborating entity "Counter" for hierarchy "Menu_Core:menu_inst|Clock_Divider:clk_div_inst|Counter:count_inst" File: C:/Users/husey/Desktop/Footsies/Menu/Clock_Divider.v Line: 18
+Info (12128): Elaborating entity "vga_background" for hierarchy "Menu_Core:menu_inst|vga_background:bg_module" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 72
+Info (12128): Elaborating entity "text_display_shadow" for hierarchy "Menu_Core:menu_inst|text_display_shadow:text_module_shadow" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 84
+Warning (10230): Verilog HDL assignment warning at text_display_shadow.v(19): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v Line: 19
+Warning (10230): Verilog HDL assignment warning at text_display_shadow.v(20): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v Line: 20
+Warning (10230): Verilog HDL assignment warning at text_display_shadow.v(29): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v Line: 29
+Warning (10230): Verilog HDL assignment warning at text_display_shadow.v(30): truncated value with size 32 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v Line: 30
+Warning (10230): Verilog HDL assignment warning at text_display_shadow.v(31): truncated value with size 32 to match size of target (5) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_shadow.v Line: 31
+Info (12128): Elaborating entity "text_display_single" for hierarchy "Menu_Core:menu_inst|text_display_single:text_module_single" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 96
+Warning (10230): Verilog HDL assignment warning at text_display_single.v(19): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v Line: 19
+Warning (10230): Verilog HDL assignment warning at text_display_single.v(20): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v Line: 20
+Warning (10230): Verilog HDL assignment warning at text_display_single.v(29): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v Line: 29
+Warning (10230): Verilog HDL assignment warning at text_display_single.v(30): truncated value with size 10 to match size of target (3) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v Line: 30
+Warning (10230): Verilog HDL assignment warning at text_display_single.v(31): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_single.v Line: 31
+Info (12128): Elaborating entity "text_display_multi" for hierarchy "Menu_Core:menu_inst|text_display_multi:text_module_multi" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 108
+Warning (10230): Verilog HDL assignment warning at text_display_multi.v(19): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v Line: 19
+Warning (10230): Verilog HDL assignment warning at text_display_multi.v(20): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v Line: 20
+Warning (10230): Verilog HDL assignment warning at text_display_multi.v(29): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v Line: 29
+Warning (10230): Verilog HDL assignment warning at text_display_multi.v(30): truncated value with size 10 to match size of target (3) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v Line: 30
+Warning (10230): Verilog HDL assignment warning at text_display_multi.v(31): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_multi.v Line: 31
+Info (12128): Elaborating entity "selection_arrow" for hierarchy "Menu_Core:menu_inst|selection_arrow:arrow_module" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 121
+Warning (10230): Verilog HDL assignment warning at selection_arrow.v(23): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 23
+Warning (10230): Verilog HDL assignment warning at selection_arrow.v(24): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 24
+Warning (10230): Verilog HDL assignment warning at selection_arrow.v(27): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 27
+Warning (10230): Verilog HDL assignment warning at selection_arrow.v(28): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 28
+Warning (10230): Verilog HDL assignment warning at selection_arrow.v(46): truncated value with size 10 to match size of target (5) File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 46
+Warning (10230): Verilog HDL assignment warning at selection_arrow.v(47): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/selection_arrow.v Line: 47
+Info (12128): Elaborating entity "text_display_start" for hierarchy "Menu_Core:menu_inst|text_display_start:text_module_start" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 133
+Warning (10230): Verilog HDL assignment warning at text_display_start.v(19): truncated value with size 32 to match size of target (10) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_start.v Line: 19
+Warning (10230): Verilog HDL assignment warning at text_display_start.v(29): truncated value with size 10 to match size of target (5) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_start.v Line: 29
+Warning (10230): Verilog HDL assignment warning at text_display_start.v(30): truncated value with size 10 to match size of target (3) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_start.v Line: 30
+Warning (10230): Verilog HDL assignment warning at text_display_start.v(31): truncated value with size 10 to match size of target (4) File: C:/Users/husey/Desktop/Footsies/Menu/text_display_start.v Line: 31
+Info (12128): Elaborating entity "vga_driver" for hierarchy "Menu_Core:menu_inst|vga_driver:vga_ctrl" File: C:/Users/husey/Desktop/Footsies/Menu/Menu_Core.v Line: 152
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 11
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 12
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 13
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 14
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 15
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 16
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 25
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 25
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 25
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 25
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 25
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 25
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 27
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 27
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 27
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 27
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 27
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 29
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 29
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 29
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 29
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 29
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 30
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 16 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 5 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 6
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 7
+    Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 8
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 18
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/husey/Desktop/Footsies/Menu/Menu.v Line: 18
+Info (21057): Implemented 466 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 81 output pins
+    Info (21061): Implemented 367 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 98 warnings
+    Info: Peak virtual memory: 4841 megabytes
+    Info: Processing ended: Mon Jun 23 16:26:15 2025
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:23
+
+

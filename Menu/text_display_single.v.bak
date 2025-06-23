@@ -1,0 +1,171 @@
+// Updated Verilog code for displaying "SinglePlayer"
+
+module text_display_single(
+    input wire [3:0] char_index,
+    input wire [3:0] pixel_in_char_y,
+    output reg [7:0] char_data
+);
+
+    always @(*) begin
+        case (char_index)
+            4'd0: begin // 'S'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b01111110;
+                    4'd1: char_data = 8'b11000000;
+                    4'd2: char_data = 8'b11000000;
+                    4'd3: char_data = 8'b01111100;
+                    4'd4: char_data = 8'b00000110;
+                    4'd5: char_data = 8'b00000110;
+                    4'd6: char_data = 8'b11000110;
+                    4'd7: char_data = 8'b01111100;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd1: begin // 'i'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b00011000;
+                    4'd2: char_data = 8'b00000000;
+                    4'd3: char_data = 8'b00011000;
+                    4'd4: char_data = 8'b00011000;
+                    4'd5: char_data = 8'b00011000;
+                    4'd6: char_data = 8'b00011000;
+                    4'd7: char_data = 8'b00111100;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd2: begin // 'n'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b00000000;
+                    4'd2: char_data = 8'b01111100;
+                    4'd3: char_data = 8'b11000110;
+                    4'd4: char_data = 8'b11000110;
+                    4'd5: char_data = 8'b11000110;
+                    4'd6: char_data = 8'b11000110;
+                    4'd7: char_data = 8'b11000110;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd3: begin // 'g'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b01111100;
+                    4'd2: char_data = 8'b11000110;
+                    4'd3: char_data = 8'b11000110;
+                    4'd4: char_data = 8'b11000110;
+                    4'd5: char_data = 8'b01111100;
+                    4'd6: char_data = 8'b00000110;
+                    4'd7: char_data = 8'b01111100;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd4: begin // 'l'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00011000;
+                    4'd1: char_data = 8'b00011000;
+                    4'd2: char_data = 8'b00011000;
+                    4'd3: char_data = 8'b00011000;
+                    4'd4: char_data = 8'b00011000;
+                    4'd5: char_data = 8'b00011000;
+                    4'd6: char_data = 8'b00011000;
+                    4'd7: char_data = 8'b00001100;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd5: begin // 'e'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b01111100;
+                    4'd2: char_data = 8'b11000110;
+                    4'd3: char_data = 8'b11111110;
+                    4'd4: char_data = 8'b11000000;
+                    4'd5: char_data = 8'b11000000;
+                    4'd6: char_data = 8'b01111110;
+                    4'd7: char_data = 8'b00000000;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd6: begin // 'P'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b01111100;
+                    4'd1: char_data = 8'b11000110;
+                    4'd2: char_data = 8'b11000110;
+                    4'd3: char_data = 8'b01111100;
+                    4'd4: char_data = 8'b11000000;
+                    4'd5: char_data = 8'b11000000;
+                    4'd6: char_data = 8'b11000000;
+                    4'd7: char_data = 8'b11000000;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd7: begin // 'l'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00011000;
+                    4'd1: char_data = 8'b00011000;
+                    4'd2: char_data = 8'b00011000;
+                    4'd3: char_data = 8'b00011000;
+                    4'd4: char_data = 8'b00011000;
+                    4'd5: char_data = 8'b00011000;
+                    4'd6: char_data = 8'b00011000;
+                    4'd7: char_data = 8'b00001100;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd8: begin // 'a'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b00111100;
+                    4'd2: char_data = 8'b00000110;
+                    4'd3: char_data = 8'b01111110;
+                    4'd4: char_data = 8'b11000110;
+                    4'd5: char_data = 8'b11000110;
+                    4'd6: char_data = 8'b01111110;
+                    4'd7: char_data = 8'b00000000;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd9: begin // 'y'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b11000110;
+                    4'd2: char_data = 8'b11000110;
+                    4'd3: char_data = 8'b11000110;
+                    4'd4: char_data = 8'b01111110;
+                    4'd5: char_data = 8'b00000110;
+                    4'd6: char_data = 8'b11000110;
+                    4'd7: char_data = 8'b01111100;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd10: begin // 'e'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b01111100;
+                    4'd2: char_data = 8'b11000110;
+                    4'd3: char_data = 8'b11111110;
+                    4'd4: char_data = 8'b11000000;
+                    4'd5: char_data = 8'b11000000;
+                    4'd6: char_data = 8'b01111110;
+                    4'd7: char_data = 8'b00000000;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            4'd11: begin // 'r'
+                case (pixel_in_char_y)
+                    4'd0: char_data = 8'b00000000;
+                    4'd1: char_data = 8'b00000000;
+                    4'd2: char_data = 8'b01111100;
+                    4'd3: char_data = 8'b11000110;
+                    4'd4: char_data = 8'b11000000;
+                    4'd5: char_data = 8'b11000000;
+                    4'd6: char_data = 8'b11000000;
+                    4'd7: char_data = 8'b11000000;
+                    default: char_data = 8'b00000000;
+                endcase
+            end
+            default: char_data = 8'b00000000;
+        endcase
+    end
+
+endmodule
