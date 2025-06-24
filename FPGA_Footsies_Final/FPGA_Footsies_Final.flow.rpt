@@ -1,5 +1,5 @@
 Flow report for FPGA_Footsies_Final
-Tue Jun 24 17:13:33 2025
+Tue Jun 24 19:18:01 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Tue Jun 24 17:13:25 2025          ;
+; Flow Status                     ; Successful - Tue Jun 24 19:17:51 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; FPGA_Footsies_Final                            ;
 ; Top-level Entity Name           ; FPGA_Footsies_Final                            ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 1,283 / 32,070 ( 4 % )                         ;
-; Total registers                 ; 406                                            ;
+; Logic utilization (in ALMs)     ; 1,279 / 32,070 ( 4 % )                         ;
+; Total registers                 ; 394                                            ;
 ; Total pins                      ; 135 / 457 ( 30 % )                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                          ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/24/2025 17:09:22 ;
+; Start date & time ; 06/24/2025 19:12:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; FPGA_Footsies_Final ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 50832833276077.175077416215328         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 50832833276077.175078155809816         ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -91,11 +91,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4892 MB             ; 00:00:27                           ;
-; Fitter               ; 00:03:38     ; 1.0                     ; 7977 MB             ; 00:22:16                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 5234 MB             ; 00:00:05                           ;
-; Timing Analyzer      ; 00:00:07     ; 2.7                     ; 5438 MB             ; 00:00:12                           ;
-; Total                ; 00:04:06     ; --                      ; --                  ; 00:23:00                           ;
+; Analysis & Synthesis ; 00:00:19     ; 1.0                     ; 4892 MB             ; 00:00:37                           ;
+; Fitter               ; 00:04:44     ; 1.0                     ; 7977 MB             ; 00:26:57                           ;
+; Assembler            ; 00:00:06     ; 1.0                     ; 5234 MB             ; 00:00:06                           ;
+; Timing Analyzer      ; 00:00:09     ; 2.4                     ; 5438 MB             ; 00:00:14                           ;
+; Total                ; 00:05:18     ; --                      ; --                  ; 00:27:54                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

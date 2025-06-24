@@ -1,12 +1,12 @@
-Fitter Status : Successful - Tue Jun 24 17:13:16 2025
+Fitter Status : Successful - Tue Jun 24 19:17:42 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : FPGA_Footsies_Final
 Top-level Entity Name : FPGA_Footsies_Final
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 1,283 / 32,070 ( 4 % )
-Total registers : 406
+Logic utilization (in ALMs) : 1,279 / 32,070 ( 4 % )
+Total registers : 394
 Total pins : 135 / 457 ( 30 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 4,065,280 ( 0 % )

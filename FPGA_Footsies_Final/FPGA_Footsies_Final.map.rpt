@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FPGA_Footsies_Final
-Tue Jun 24 17:09:37 2025
+Tue Jun 24 19:12:57 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -66,14 +66,15 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
  58. Port Connectivity Checks: "game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1"
  59. Port Connectivity Checks: "game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm"
  60. Port Connectivity Checks: "game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga"
- 61. Port Connectivity Checks: "game_fsm:game"
- 62. Port Connectivity Checks: "CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift"
- 63. Port Connectivity Checks: "CPU_logic:cpu|Clock_Divider:clock_cpu"
- 64. Port Connectivity Checks: "CPU_logic:cpu"
- 65. Port Connectivity Checks: "keypad_1x3:keypad_inst"
- 66. Post-Synthesis Netlist Statistics for Top Partition
- 67. Elapsed Time Per Partition
- 68. Analysis & Synthesis Messages
+ 61. Port Connectivity Checks: "game_fsm:game|Menu_Core:menu_inst"
+ 62. Port Connectivity Checks: "game_fsm:game"
+ 63. Port Connectivity Checks: "CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift"
+ 64. Port Connectivity Checks: "CPU_logic:cpu|Clock_Divider:clock_cpu"
+ 65. Port Connectivity Checks: "CPU_logic:cpu"
+ 66. Port Connectivity Checks: "keypad_1x3:keypad_inst"
+ 67. Post-Synthesis Netlist Statistics for Top Partition
+ 68. Elapsed Time Per Partition
+ 69. Analysis & Synthesis Messages
 
 
 
@@ -100,13 +101,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Jun 24 17:09:37 2025          ;
+; Analysis & Synthesis Status     ; Successful - Tue Jun 24 19:12:57 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; FPGA_Footsies_Final                            ;
 ; Top-level Entity Name           ; FPGA_Footsies_Final                            ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 368                                            ;
+; Total registers                 ; 365                                            ;
 ; Total pins                      ; 135                                            ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
@@ -225,8 +226,7 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processors 8-16        ;   0.0%      ;
+;     Processors 7-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -264,31 +264,31 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                  ;
-+---------------------------------------------+----------------+
-; Resource                                    ; Usage          ;
-+---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 1310           ;
-;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1974           ;
-;     -- 7 input functions                    ; 17             ;
-;     -- 6 input functions                    ; 626            ;
-;     -- 5 input functions                    ; 343            ;
-;     -- 4 input functions                    ; 213            ;
-;     -- <=3 input functions                  ; 775            ;
-;                                             ;                ;
-; Dedicated logic registers                   ; 368            ;
-;                                             ;                ;
-; I/O pins                                    ; 135            ;
-;                                             ;                ;
-; Total DSP Blocks                            ; 0              ;
-;                                             ;                ;
-; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 181            ;
-; Total fan-out                               ; 9401           ;
-; Average fan-out                             ; 3.55           ;
-+---------------------------------------------+----------------+
++-----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                           ;
++---------------------------------------------+-------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                   ;
++---------------------------------------------+-------------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1318                                                                    ;
+;                                             ;                                                                         ;
+; Combinational ALUT usage for logic          ; 1964                                                                    ;
+;     -- 7 input functions                    ; 19                                                                      ;
+;     -- 6 input functions                    ; 651                                                                     ;
+;     -- 5 input functions                    ; 327                                                                     ;
+;     -- 4 input functions                    ; 193                                                                     ;
+;     -- <=3 input functions                  ; 774                                                                     ;
+;                                             ;                                                                         ;
+; Dedicated logic registers                   ; 365                                                                     ;
+;                                             ;                                                                         ;
+; I/O pins                                    ; 135                                                                     ;
+;                                             ;                                                                         ;
+; Total DSP Blocks                            ; 0                                                                       ;
+;                                             ;                                                                         ;
+; Maximum fan-out node                        ; game_fsm:game|game_core:game_inst|vga_driver:vga|h_state.H_ACTIVE_STATE ;
+; Maximum fan-out                             ; 205                                                                     ;
+; Total fan-out                               ; 9412                                                                    ;
+; Average fan-out                             ; 3.57                                                                    ;
++---------------------------------------------+-------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -296,22 +296,22 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node                                  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                               ; Entity Name              ; Library Name ;
 +-------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
-; |FPGA_Footsies_Final                                        ; 1974 (1)            ; 368 (0)                   ; 0                 ; 0          ; 135  ; 0            ; |FPGA_Footsies_Final                                                                                              ; FPGA_Footsies_Final      ; work         ;
-;    |CPU_logic:cpu|                                          ; 49 (0)              ; 52 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu                                                                                ; CPU_logic                ; work         ;
+; |FPGA_Footsies_Final                                        ; 1964 (1)            ; 365 (0)                   ; 0                 ; 0          ; 135  ; 0            ; |FPGA_Footsies_Final                                                                                              ; FPGA_Footsies_Final      ; work         ;
+;    |CPU_logic:cpu|                                          ; 42 (0)              ; 51 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu                                                                                ; CPU_logic                ; work         ;
 ;       |Clock_Divider:clock_cpu|                             ; 41 (9)              ; 35 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu|Clock_Divider:clock_cpu                                                        ; Clock_Divider            ; work         ;
 ;          |Counter:count_inst|                               ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu|Clock_Divider:clock_cpu|Counter:count_inst                                     ; Counter                  ; work         ;
-;       |LFSR_16bit:my_lfsr|                                  ; 8 (1)               ; 17 (1)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu|LFSR_16bit:my_lfsr                                                             ; LFSR_16bit               ; work         ;
-;          |Shift_Register:shift|                             ; 7 (7)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift                                        ; Shift_Register           ; work         ;
+;       |LFSR_16bit:my_lfsr|                                  ; 1 (1)               ; 16 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu|LFSR_16bit:my_lfsr                                                             ; LFSR_16bit               ; work         ;
+;          |Shift_Register:shift|                             ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift                                        ; Shift_Register           ; work         ;
 ;    |Clock_Divider:clk_div_inst|                             ; 42 (10)             ; 35 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|Clock_Divider:clk_div_inst                                                                   ; Clock_Divider            ; work         ;
 ;       |Counter:count_inst|                                  ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|Clock_Divider:clk_div_inst|Counter:count_inst                                                ; Counter                  ; work         ;
-;    |game_fsm:game|                                          ; 1879 (27)           ; 278 (7)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game                                                                                ; game_fsm                 ; work         ;
-;       |Game_Over_core:game_over_inst|                       ; 218 (0)             ; 75 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst                                                  ; Game_Over_core           ; work         ;
+;    |game_fsm:game|                                          ; 1876 (24)           ; 276 (7)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game                                                                                ; game_fsm                 ; work         ;
+;       |Game_Over_core:game_over_inst|                       ; 194 (0)             ; 71 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst                                                  ; Game_Over_core           ; work         ;
 ;          |Clock_Divider:clk_div_inst|                       ; 34 (2)              ; 34 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|Clock_Divider:clk_div_inst                       ; Clock_Divider            ; work         ;
 ;             |Counter:count_inst|                            ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|Clock_Divider:clk_div_inst|Counter:count_inst    ; Counter                  ; work         ;
-;          |text_display_game_over:text_module_game_over|     ; 40 (40)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over     ; text_display_game_over   ; work         ;
-;          |text_display_player_wins:text_module_player_wins| ; 81 (81)             ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins ; text_display_player_wins ; work         ;
+;          |text_display_game_over:text_module_game_over|     ; 47 (47)             ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over     ; text_display_game_over   ; work         ;
+;          |text_display_player_wins:text_module_player_wins| ; 55 (55)             ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins ; text_display_player_wins ; work         ;
 ;          |vga_background:bg_module|                         ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_background:bg_module                         ; vga_background           ; work         ;
-;          |vga_driver:vga_ctrl|                              ; 61 (61)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl                              ; vga_driver               ; work         ;
+;          |vga_driver:vga_ctrl|                              ; 56 (56)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl                              ; vga_driver               ; work         ;
 ;       |Menu_Core:menu_inst|                                 ; 349 (0)             ; 75 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst                                                            ; Menu_Core                ; work         ;
 ;          |Clock_Divider:clk_div_inst|                       ; 41 (9)              ; 34 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst                                 ; Clock_Divider            ; work         ;
 ;             |Counter:count_inst|                            ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|Counter:count_inst              ; Counter                  ; work         ;
@@ -322,22 +322,22 @@ https://fpgasoftware.intel.com/eula.
 ;          |text_display_start:text_module_start|             ; 76 (76)             ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|text_display_start:text_module_start                       ; text_display_start       ; work         ;
 ;          |vga_background:bg_module|                         ; 2 (2)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_background:bg_module                                   ; vga_background           ; work         ;
 ;          |vga_driver:vga_ctrl|                              ; 61 (61)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl                                        ; vga_driver               ; work         ;
-;       |game_core:game_inst|                                 ; 1285 (537)          ; 121 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst                                                            ; game_core                ; work         ;
-;          |Background_renderer:background|                   ; 69 (69)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Background_renderer:background                             ; Background_renderer      ; work         ;
+;       |game_core:game_inst|                                 ; 1309 (532)          ; 123 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst                                                            ; game_core                ; work         ;
+;          |Background_renderer:background|                   ; 67 (67)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Background_renderer:background                             ; Background_renderer      ; work         ;
 ;          |Clock_Divider:clock_fsm|                          ; 41 (9)              ; 35 (3)                    ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm                                    ; Clock_Divider            ; work         ;
 ;             |Counter:count_inst|                            ; 32 (32)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|Counter:count_inst                 ; Counter                  ; work         ;
 ;          |Clock_Divider:clock_vga|                          ; 8 (8)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga                                    ; Clock_Divider            ; work         ;
-;          |Collision_logic:col_p1_hits_p2|                   ; 56 (56)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Collision_logic:col_p1_hits_p2                             ; Collision_logic          ; work         ;
-;          |Collision_logic:col_p2_hits_p1|                   ; 68 (68)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Collision_logic:col_p2_hits_p1                             ; Collision_logic          ; work         ;
-;          |Health_Block:health_block_p1|                     ; 4 (4)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p1                               ; Health_Block             ; work         ;
-;          |Health_Block:health_block_p2|                     ; 4 (4)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p2                               ; Health_Block             ; work         ;
-;          |Sprite_FSM:fsm_p1|                                ; 40 (40)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1                                          ; Sprite_FSM               ; work         ;
-;          |Sprite_FSM:fsm_p2|                                ; 33 (33)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p2                                          ; Sprite_FSM               ; work         ;
-;          |Sprite_boxes:boxes1|                              ; 126 (126)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1                                        ; Sprite_boxes             ; work         ;
-;          |Sprite_boxes:boxes2|                              ; 120 (120)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2                                        ; Sprite_boxes             ; work         ;
-;          |Sprite_renderer:render1|                          ; 63 (63)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render1                                    ; Sprite_renderer          ; work         ;
-;          |Sprite_renderer:render2|                          ; 48 (48)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render2                                    ; Sprite_renderer          ; work         ;
-;          |vga_driver:vga|                                   ; 68 (68)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|vga_driver:vga                                             ; vga_driver               ; work         ;
+;          |Collision_logic:col_p1_hits_p2|                   ; 57 (57)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Collision_logic:col_p1_hits_p2                             ; Collision_logic          ; work         ;
+;          |Collision_logic:col_p2_hits_p1|                   ; 67 (67)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Collision_logic:col_p2_hits_p1                             ; Collision_logic          ; work         ;
+;          |Health_Block:health_block_p1|                     ; 6 (6)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p1                               ; Health_Block             ; work         ;
+;          |Health_Block:health_block_p2|                     ; 6 (6)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p2                               ; Health_Block             ; work         ;
+;          |Sprite_FSM:fsm_p1|                                ; 55 (55)             ; 11 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1                                          ; Sprite_FSM               ; work         ;
+;          |Sprite_FSM:fsm_p2|                                ; 43 (43)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p2                                          ; Sprite_FSM               ; work         ;
+;          |Sprite_boxes:boxes1|                              ; 125 (125)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1                                        ; Sprite_boxes             ; work         ;
+;          |Sprite_boxes:boxes2|                              ; 119 (119)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2                                        ; Sprite_boxes             ; work         ;
+;          |Sprite_renderer:render1|                          ; 68 (68)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render1                                    ; Sprite_renderer          ; work         ;
+;          |Sprite_renderer:render2|                          ; 46 (46)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render2                                    ; Sprite_renderer          ; work         ;
+;          |vga_driver:vga|                                   ; 69 (69)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|vga_driver:vga                                             ; vga_driver               ; work         ;
 ;    |keypad_1x3:keypad_inst|                                 ; 3 (3)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |FPGA_Footsies_Final|keypad_1x3:keypad_inst                                                                       ; keypad_1x3               ; work         ;
 +-------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -459,6 +459,7 @@ Encoding Type:  One-Hot
 ; game_fsm:game|Menu_Core:menu_inst|vga_background:bg_module|color_out[0..3,6]                               ; Stuck at GND due to stuck port data_in                                                                                ;
 ; game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|control[1]                                    ; Stuck at GND due to stuck port data_in                                                                                ;
 ; CPU_logic:cpu|LFSR_16bit:my_lfsr|shift_reg_control[1]                                                      ; Stuck at VCC due to stuck port data_in                                                                                ;
+; CPU_logic:cpu|LFSR_16bit:my_lfsr|shift_reg_control[0]                                                      ; Stuck at GND due to stuck port data_in                                                                                ;
 ; CPU_logic:cpu|Clock_Divider:clock_cpu|control[1]                                                           ; Stuck at GND due to stuck port data_in                                                                                ;
 ; keypad_1x3:keypad_inst|row                                                                                 ; Stuck at GND due to stuck port data_in                                                                                ;
 ; Clock_Divider:clk_div_inst|control[1]                                                                      ; Stuck at GND due to stuck port data_in                                                                                ;
@@ -528,6 +529,10 @@ Encoding Type:  One-Hot
 ; game_fsm:game|Menu_Core:menu_inst|text_display_single:text_module_single|color_out[5,7]                    ; Merged with game_fsm:game|Menu_Core:menu_inst|text_display_single:text_module_single|color_out[4]                     ;
 ; game_fsm:game|Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[5,7]                    ; Merged with game_fsm:game|Menu_Core:menu_inst|text_display_shadow:text_module_shadow|color_out[4]                     ;
 ; game_fsm:game|current_state[2]                                                                             ; Stuck at GND due to stuck port data_in                                                                                ;
+; game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins|color_out[2]  ; Stuck at GND due to stuck port data_in                                                                                ;
+; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|green_reg[5]                               ; Stuck at GND due to stuck port data_in                                                                                ;
+; game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins|color_out[5]  ; Merged with game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins|color_out[4] ;
+; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|red_reg[5]                                 ; Merged with game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|green_reg[7]                              ;
 ; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|v_state~5                                  ; Lost fanout                                                                                                           ;
 ; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|v_state~6                                  ; Lost fanout                                                                                                           ;
 ; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|v_state~7                                  ; Lost fanout                                                                                                           ;
@@ -576,10 +581,8 @@ Encoding Type:  One-Hot
 ; game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~10                                           ; Lost fanout                                                                                                           ;
 ; game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~11                                           ; Lost fanout                                                                                                           ;
 ; game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_state~12                                           ; Lost fanout                                                                                                           ;
-; game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1|frame_counter[4]                                       ; Stuck at GND due to stuck port data_in                                                                                ;
 ; game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p2|frame_counter[4,5]                                     ; Stuck at GND due to stuck port data_in                                                                                ;
-; game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1|frame_counter[5]                                       ; Stuck at GND due to stuck port data_in                                                                                ;
-; Total Number of Removed Registers = 237                                                                    ;                                                                                                                       ;
+; Total Number of Removed Registers = 240                                                                    ;                                                                                                                       ;
 +------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 
@@ -588,6 +591,9 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------------------------------------+
 ; Register name                                                                     ; Reason for Removal        ; Registers Removed due to This Register                                                                     ;
 +-----------------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------------------------------------+
+; game_fsm:game|Game_Over_core:game_over_inst|vga_background:bg_module|color_out[2] ; Stuck at GND              ; game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over|color_out[2],     ;
+;                                                                                   ; due to stuck port data_in ; game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins|color_out[2], ;
+;                                                                                   ;                           ; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|green_reg[5]                               ;
 ; game_fsm:game|Game_Over_core:game_over_inst|vga_background:bg_module|color_out[6] ; Stuck at GND              ; game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over|color_out[6],     ;
 ;                                                                                   ; due to stuck port data_in ; game_fsm:game|Game_Over_core:game_over_inst|text_display_player_wins:text_module_player_wins|color_out[6], ;
 ;                                                                                   ;                           ; game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|red_reg[6]                                 ;
@@ -610,11 +616,7 @@ Encoding Type:  One-Hot
 ;                                                                                   ; due to stuck port data_in ;                                                                                                            ;
 ; game_fsm:game|Game_Over_core:game_over_inst|vga_background:bg_module|color_out[1] ; Stuck at GND              ; game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over|color_out[1]      ;
 ;                                                                                   ; due to stuck port data_in ;                                                                                                            ;
-; game_fsm:game|Game_Over_core:game_over_inst|vga_background:bg_module|color_out[2] ; Stuck at GND              ; game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over|color_out[2]      ;
-;                                                                                   ; due to stuck port data_in ;                                                                                                            ;
 ; game_fsm:game|Game_Over_core:game_over_inst|vga_background:bg_module|color_out[3] ; Stuck at GND              ; game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over|color_out[3]      ;
-;                                                                                   ; due to stuck port data_in ;                                                                                                            ;
-; game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1|frame_counter[4]              ; Stuck at GND              ; game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1|frame_counter[5]                                       ;
 ;                                                                                   ; due to stuck port data_in ;                                                                                                            ;
 +-----------------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------------------------------------+
 
@@ -624,10 +626,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 368   ;
-; Number of registers using Synchronous Clear  ; 235   ;
-; Number of registers using Synchronous Load   ; 5     ;
-; Number of registers using Asynchronous Clear ; 20    ;
+; Total registers                              ; 365   ;
+; Number of registers using Synchronous Clear  ; 234   ;
+; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Asynchronous Clear ; 30    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 50    ;
 ; Number of registers using Preset             ; 0     ;
@@ -639,25 +641,24 @@ Encoding Type:  One-Hot
 +--------------------------------------------------------------------------+---------+
 ; Inverted Register                                                        ; Fan out ;
 +--------------------------------------------------------------------------+---------+
-; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[1] ; 10      ;
-; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0] ; 10      ;
-; game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|health[1] ; 11      ;
-; game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|health[0] ; 11      ;
+; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[1] ; 4       ;
+; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0] ; 4       ;
+; game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|health[1] ; 4       ;
+; game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|health[0] ; 4       ;
 ; game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|block[1]  ; 5       ;
 ; game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|block[0]  ; 6       ;
 ; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|block[0]  ; 5       ;
-; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|block[1]  ; 4       ;
+; game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|block[1]  ; 5       ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[2]    ; 19      ;
 ; game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[5]    ; 18      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[2]    ; 20      ;
 ; game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[6]    ; 33      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[2]    ; 22      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[8]    ; 20      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[3]    ; 20      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[7]    ; 19      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[6]    ; 20      ;
-; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[4]    ; 17      ;
-; CPU_logic:cpu|LFSR_16bit:my_lfsr|shift_reg_control[0]                    ; 16      ;
-; Total number of inverted registers = 18                                  ;         ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[2]    ; 23      ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[8]    ; 22      ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[3]    ; 19      ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[4]    ; 19      ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[7]    ; 21      ;
+; game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[6]    ; 22      ;
+; Total number of inverted registers = 17                                  ;         ;
 +--------------------------------------------------------------------------+---------+
 
 
@@ -666,32 +667,36 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|green_reg[5] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|green_reg[7]           ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|blue_reg[6]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|blue_reg[6]            ;
 ; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|current_state[2]                                               ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[5]        ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[9]        ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|v_counter[3] ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|h_counter[6] ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[1]        ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|v_counter[6] ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Game_Over_core:game_over_inst|vga_driver:vga_ctrl|h_counter[1] ;
 ; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|vga_driver:vga|v_counter[9]                ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|vga_driver:vga|h_counter[9]                ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|v_counter[5]           ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[6]           ;
-; 24:1               ; 6 bits    ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p2|frame_counter[4]         ;
-; 24:1               ; 6 bits    ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1|frame_counter[0]         ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[3]        ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|vga_driver:vga|h_counter[8]                ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|v_counter[0]           ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[4]           ;
+; 25:1               ; 6 bits    ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p2|frame_counter[1]         ;
+; 25:1               ; 6 bits    ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1|frame_counter[5]         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|health[0]     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0]     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p2|block[1]      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|block[0]      ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[4]        ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_renderer:render1|sprite_x[5]        ;
-; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Mux0                   ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Selector37             ;
-; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Mux8                   ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Selector40             ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|Mux16                                                          ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|Mux4                                                           ;
-; 7:1                ; 9 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Mux8                   ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Mux7                   ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Selector32             ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Mux5                   ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Selector37             ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|Mux10                                                          ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|Mux6                                                           ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Mux4                   ;
 ; 16:1               ; 10 bits   ; 100 LEs       ; 40 LEs               ; 60 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2|Selector6              ;
-; 7:1                ; 9 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Mux10                  ;
-; 16:1               ; 10 bits   ; 100 LEs       ; 40 LEs               ; 60 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Selector9              ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Mux2                   ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Mux8                   ;
+; 16:1               ; 10 bits   ; 100 LEs       ; 40 LEs               ; 60 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Selector4              ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |FPGA_Footsies_Final|game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1|Mux1                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------+
 
 
@@ -1161,13 +1166,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+-------+----------+--------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "game_fsm:game|Game_Over_core:game_over_inst"                                                             ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                  ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; leds ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game_fsm:game|Game_Over_core:game_over_inst"                                                              ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; reset ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; leds  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------+
@@ -1246,19 +1252,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+-------+----------+-------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "game_fsm:game"                                                                                                                                           ;
-+------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port             ; Type   ; Severity ; Details                                                                                                                                      ;
-+------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; reset            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-; menu_enable      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-; game_enable      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-; game_over_enable ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-; game_mode        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-; winner           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-; leds             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-+------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "game_fsm:game|Menu_Core:menu_inst" ;
++-------+-------+----------+------------------------------------+
+; Port  ; Type  ; Severity ; Details                            ;
++-------+-------+----------+------------------------------------+
+; reset ; Input ; Info     ; Stuck at GND                       ;
++-------+-------+----------+------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game_fsm:game"                                                                                                       ;
++------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port             ; Type   ; Severity ; Details                                                                                                  ;
++------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; menu_enable      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; game_enable      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; game_over_enable ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; game_mode        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; winner           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; leds             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------+
@@ -1293,6 +1307,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port               ; Type   ; Severity ; Details                                                                             ;
 +--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; reset              ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; lfsr_output[12..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +--------------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -1311,17 +1326,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 368                         ;
-;     CLR               ; 11                          ;
-;     CLR SCLR          ; 8                           ;
-;     CLR SLD           ; 1                           ;
-;     ENA               ; 20                          ;
+; arriav_ff             ; 365                         ;
+;     CLR               ; 12                          ;
+;     ENA               ; 2                           ;
+;     ENA CLR           ; 18                          ;
 ;     ENA SCLR          ; 30                          ;
-;     SCLR              ; 193                         ;
+;     SCLR              ; 200                         ;
 ;     SCLR SLD          ; 4                           ;
-;     plain             ; 101                         ;
+;     plain             ; 99                          ;
 ; arriav_io_obuf        ; 36                          ;
-; arriav_lcell_comb     ; 1974                        ;
+; arriav_lcell_comb     ; 1964                        ;
 ;     arith             ; 505                         ;
 ;         0 data inputs ; 15                          ;
 ;         1 data inputs ; 413                         ;
@@ -1329,20 +1343,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 7                           ;
 ;         4 data inputs ; 36                          ;
 ;         5 data inputs ; 2                           ;
-;     extend            ; 17                          ;
-;         7 data inputs ; 17                          ;
-;     normal            ; 1452                        ;
+;     extend            ; 19                          ;
+;         7 data inputs ; 19                          ;
+;     normal            ; 1440                        ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 11                          ;
-;         2 data inputs ; 134                         ;
-;         3 data inputs ; 162                         ;
-;         4 data inputs ; 177                         ;
-;         5 data inputs ; 341                         ;
-;         6 data inputs ; 626                         ;
+;         1 data inputs ; 12                          ;
+;         2 data inputs ; 125                         ;
+;         3 data inputs ; 169                         ;
+;         4 data inputs ; 157                         ;
+;         5 data inputs ; 325                         ;
+;         6 data inputs ; 651                         ;
 ; boundary_port         ; 135                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.30                        ;
-; Average LUT depth     ; 5.50                        ;
+; Max LUT depth         ; 9.10                        ;
+; Average LUT depth     ; 5.56                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1351,7 +1365,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:07     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -1361,7 +1375,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Tue Jun 24 17:09:22 2025
+    Info: Processing started: Tue Jun 24 19:12:37 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPGA_Footsies_Final -c FPGA_Footsies_Final
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -1375,13 +1389,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file counter
     Info (12023): Found entity 1: Counter File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Counter.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cpu_logic.v
     Info (12023): Found entity 1: CPU_logic File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/CPU_logic.v Line: 1
-Warning (10275): Verilog HDL Module Instantiation warning at FPGA_Footsies_Final.v(102): ignored dangling comma in List of Port Connections File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 102
+Warning (10275): Verilog HDL Module Instantiation warning at FPGA_Footsies_Final.v(103): ignored dangling comma in List of Port Connections File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 103
 Info (12021): Found 1 design units, including 1 entities, in source file fpga_footsies_final.v
     Info (12023): Found entity 1: FPGA_Footsies_Final File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file game_core.v
     Info (12023): Found entity 1: game_core File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 1
-Warning (10275): Verilog HDL Module Instantiation warning at game_fsm.v(198): ignored dangling comma in List of Port Connections File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 198
-Warning (10275): Verilog HDL Module Instantiation warning at game_fsm.v(218): ignored dangling comma in List of Port Connections File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 218
 Info (12021): Found 1 design units, including 1 entities, in source file game_fsm.v
     Info (12023): Found entity 1: game_fsm File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file game_over_core.v
@@ -1403,7 +1415,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file sprite_
 Info (12021): Found 1 design units, including 1 entities, in source file sprite_fsm.v
     Info (12023): Found entity 1: Sprite_FSM File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_FSM.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file sprite_renderer.v
-    Info (12023): Found entity 1: Sprite_renderer File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 2
+    Info (12023): Found entity 1: Sprite_renderer File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file text_display_game_over.v
     Info (12023): Found entity 1: text_display_game_over File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/text_display_game_over.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file text_display_multi.v
@@ -1420,7 +1432,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_bac
     Info (12023): Found entity 1: vga_background File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/vga_background.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga_driver.v
     Info (12023): Found entity 1: vga_driver File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/vga_driver.v Line: 1
-Warning (10037): Verilog HDL or VHDL warning at game_fsm.v(150): conditional expression evaluates to a constant File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 150
 Info (12127): Elaborating entity "FPGA_Footsies_Final" for the top level hierarchy
 Warning (10034): Output port "HEX0" at FPGA_Footsies_Final.v(15) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 15
 Warning (10034): Output port "HEX1" at FPGA_Footsies_Final.v(16) has no driver File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 16
@@ -1436,9 +1447,10 @@ Info (12128): Elaborating entity "CPU_logic" for hierarchy "CPU_logic:cpu" File:
 Info (12128): Elaborating entity "Clock_Divider" for hierarchy "CPU_logic:cpu|Clock_Divider:clock_cpu" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/CPU_logic.v Line: 18
 Info (12128): Elaborating entity "LFSR_16bit" for hierarchy "CPU_logic:cpu|LFSR_16bit:my_lfsr" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/CPU_logic.v Line: 25
 Info (12128): Elaborating entity "Shift_Register" for hierarchy "CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/LFSR_16bit.v Line: 31
-Info (12128): Elaborating entity "game_fsm" for hierarchy "game_fsm:game" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 102
-Warning (10270): Verilog HDL Case Statement warning at game_fsm.v(111): incomplete case statement has no default case item File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 111
-Info (12128): Elaborating entity "Menu_Core" for hierarchy "game_fsm:game|Menu_Core:menu_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 172
+Info (12128): Elaborating entity "game_fsm" for hierarchy "game_fsm:game" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 103
+Warning (10036): Verilog HDL or VHDL warning at game_fsm.v(139): object "internal_reset" assigned a value but never read File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 139
+Warning (10270): Verilog HDL Case Statement warning at game_fsm.v(108): incomplete case statement has no default case item File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 108
+Info (12128): Elaborating entity "Menu_Core" for hierarchy "game_fsm:game|Menu_Core:menu_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 181
 Info (12128): Elaborating entity "vga_background" for hierarchy "game_fsm:game|Menu_Core:menu_inst|vga_background:bg_module" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Menu_Core.v Line: 71
 Info (12128): Elaborating entity "text_display_shadow" for hierarchy "game_fsm:game|Menu_Core:menu_inst|text_display_shadow:text_module_shadow" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Menu_Core.v Line: 83
 Warning (10230): Verilog HDL assignment warning at text_display_shadow.v(19): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/text_display_shadow.v Line: 19
@@ -1471,7 +1483,7 @@ Warning (10230): Verilog HDL assignment warning at text_display_start.v(29): tru
 Warning (10230): Verilog HDL assignment warning at text_display_start.v(30): truncated value with size 10 to match size of target (3) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/text_display_start.v Line: 30
 Warning (10230): Verilog HDL assignment warning at text_display_start.v(31): truncated value with size 10 to match size of target (4) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/text_display_start.v Line: 31
 Info (12128): Elaborating entity "vga_driver" for hierarchy "game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Menu_Core.v Line: 151
-Info (12128): Elaborating entity "game_core" for hierarchy "game_fsm:game|game_core:game_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 198
+Info (12128): Elaborating entity "game_core" for hierarchy "game_fsm:game|game_core:game_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 205
 Info (12128): Elaborating entity "Clock_Divider" for hierarchy "game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 50
 Info (12128): Elaborating entity "Clock_Divider" for hierarchy "game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 59
 Info (12128): Elaborating entity "Sprite_FSM" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_FSM:fsm_p1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 249
@@ -1483,17 +1495,17 @@ Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(136): truncated 
 Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(144): truncated value with size 32 to match size of target (6) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_FSM.v Line: 144
 Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(153): truncated value with size 32 to match size of target (6) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_FSM.v Line: 153
 Warning (10230): Verilog HDL assignment warning at Sprite_FSM.v(162): truncated value with size 32 to match size of target (6) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_FSM.v Line: 162
-Info (12128): Elaborating entity "Sprite_renderer" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_renderer:render1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 276
+Info (12128): Elaborating entity "Sprite_renderer" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_renderer:render1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 277
 Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(34): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 34
-Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(50): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 50
-Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(65): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 65
-Info (10264): Verilog HDL Case Statement information at Sprite_renderer.v(40): all case item expressions in this case statement are onehot File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 40
-Info (12128): Elaborating entity "Sprite_renderer" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_renderer:render2" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 288
+Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(47): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 47
+Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(61): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 61
+Info (10264): Verilog HDL Case Statement information at Sprite_renderer.v(37): all case item expressions in this case statement are onehot File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 37
+Info (12128): Elaborating entity "Sprite_renderer" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_renderer:render2" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 290
 Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(34): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 34
-Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(44): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 44
-Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(60): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 60
-Info (10264): Verilog HDL Case Statement information at Sprite_renderer.v(40): all case item expressions in this case statement are onehot File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 40
-Info (12128): Elaborating entity "Background_renderer" for hierarchy "game_fsm:game|game_core:game_inst|Background_renderer:background" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 298
+Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(41): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 41
+Warning (10230): Verilog HDL assignment warning at Sprite_renderer.v(56): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 56
+Info (10264): Verilog HDL Case Statement information at Sprite_renderer.v(37): all case item expressions in this case statement are onehot File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_renderer.v Line: 37
+Info (12128): Elaborating entity "Background_renderer" for hierarchy "game_fsm:game|game_core:game_inst|Background_renderer:background" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 300
 Warning (10230): Verilog HDL assignment warning at Background_renderer.v(38): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Background_renderer.v Line: 38
 Warning (10230): Verilog HDL assignment warning at Background_renderer.v(39): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Background_renderer.v Line: 39
 Warning (10230): Verilog HDL assignment warning at Background_renderer.v(40): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Background_renderer.v Line: 40
@@ -1509,7 +1521,7 @@ Warning (10230): Verilog HDL assignment warning at Background_renderer.v(70): tr
 Warning (10230): Verilog HDL assignment warning at Background_renderer.v(71): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Background_renderer.v Line: 71
 Warning (10230): Verilog HDL assignment warning at Background_renderer.v(72): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Background_renderer.v Line: 72
 Warning (10230): Verilog HDL assignment warning at Background_renderer.v(73): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Background_renderer.v Line: 73
-Info (12128): Elaborating entity "Sprite_boxes" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 325
+Info (12128): Elaborating entity "Sprite_boxes" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_boxes:boxes1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 327
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(73): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 73
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(74): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 74
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(82): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 82
@@ -1537,7 +1549,7 @@ Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(185): truncate
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(196): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 196
 Warning (10240): Verilog HDL Always Construct warning at Sprite_boxes.v(52): inferring latch(es) for variable "temp_hitbox_x1", which holds its previous value in one or more paths through the always construct File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 52
 Warning (10240): Verilog HDL Always Construct warning at Sprite_boxes.v(52): inferring latch(es) for variable "temp_hitbox_x2", which holds its previous value in one or more paths through the always construct File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 52
-Info (12128): Elaborating entity "Sprite_boxes" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 351
+Info (12128): Elaborating entity "Sprite_boxes" for hierarchy "game_fsm:game|game_core:game_inst|Sprite_boxes:boxes2" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 353
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(73): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 73
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(74): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 74
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(82): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 82
@@ -1561,11 +1573,11 @@ Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(181): truncate
 Warning (10230): Verilog HDL assignment warning at Sprite_boxes.v(196): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 196
 Warning (10240): Verilog HDL Always Construct warning at Sprite_boxes.v(52): inferring latch(es) for variable "temp_hitbox_x1", which holds its previous value in one or more paths through the always construct File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 52
 Warning (10240): Verilog HDL Always Construct warning at Sprite_boxes.v(52): inferring latch(es) for variable "temp_hitbox_x2", which holds its previous value in one or more paths through the always construct File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Sprite_boxes.v Line: 52
-Info (12128): Elaborating entity "Collision_logic" for hierarchy "game_fsm:game|game_core:game_inst|Collision_logic:col_p1_hits_p2" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 378
-Info (12128): Elaborating entity "Health_Block" for hierarchy "game_fsm:game|game_core:game_inst|Health_Block:health_block_p1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 414
+Info (12128): Elaborating entity "Collision_logic" for hierarchy "game_fsm:game|game_core:game_inst|Collision_logic:col_p1_hits_p2" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 380
+Info (12128): Elaborating entity "Health_Block" for hierarchy "game_fsm:game|game_core:game_inst|Health_Block:health_block_p1" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_core.v Line: 416
 Warning (10230): Verilog HDL assignment warning at Health_Block.v(40): truncated value with size 32 to match size of target (2) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Health_Block.v Line: 40
 Warning (10230): Verilog HDL assignment warning at Health_Block.v(48): truncated value with size 32 to match size of target (2) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Health_Block.v Line: 48
-Info (12128): Elaborating entity "Game_Over_core" for hierarchy "game_fsm:game|Game_Over_core:game_over_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 218
+Info (12128): Elaborating entity "Game_Over_core" for hierarchy "game_fsm:game|Game_Over_core:game_over_inst" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/game_fsm.v Line: 225
 Info (12128): Elaborating entity "text_display_game_over" for hierarchy "game_fsm:game|Game_Over_core:game_over_inst|text_display_game_over:text_module_game_over" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/Game_Over_core.v Line: 57
 Warning (10230): Verilog HDL assignment warning at text_display_game_over.v(19): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/text_display_game_over.v Line: 19
 Warning (10230): Verilog HDL assignment warning at text_display_game_over.v(20): truncated value with size 32 to match size of target (10) File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/text_display_game_over.v Line: 20
@@ -1696,26 +1708,25 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 48 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 10 input pin(s) that do not drive logic
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 9
     Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 10
     Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 11
     Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
     Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
-    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
     Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.v Line: 29
-Info (21057): Implemented 2120 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2115 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 81 output pins
     Info (21060): Implemented 36 bidirectional pins
-    Info (21061): Implemented 1985 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 254 warnings
+    Info (21061): Implemented 1980 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 251 warnings
     Info: Peak virtual memory: 4892 megabytes
-    Info: Processing ended: Tue Jun 24 17:09:37 2025
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:28
+    Info: Processing ended: Tue Jun 24 19:12:57 2025
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:37
 
 

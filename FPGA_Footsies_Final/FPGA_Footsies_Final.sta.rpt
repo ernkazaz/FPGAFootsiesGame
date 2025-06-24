@@ -1,5 +1,5 @@
 Timing Analyzer report for FPGA_Footsies_Final
-Tue Jun 24 17:13:33 2025
+Tue Jun 24 19:18:01 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -101,26 +101,26 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 2.69        ;
+; Average used               ; 2.43        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  11.6%      ;
-;     Processor 3            ;  11.5%      ;
-;     Processor 4            ;  11.5%      ;
-;     Processor 5            ;  11.5%      ;
-;     Processor 6            ;  11.4%      ;
-;     Processor 7            ;  11.4%      ;
-;     Processor 8            ;  11.4%      ;
-;     Processor 9            ;  11.4%      ;
-;     Processor 10           ;  11.3%      ;
-;     Processor 11           ;  11.1%      ;
-;     Processor 12           ;  11.0%      ;
-;     Processor 13           ;  11.0%      ;
-;     Processor 14           ;  11.0%      ;
-;     Processor 15           ;  11.0%      ;
-;     Processor 16           ;  11.0%      ;
+;     Processor 2            ;   9.9%      ;
+;     Processor 3            ;   9.8%      ;
+;     Processor 4            ;   9.8%      ;
+;     Processor 5            ;   9.7%      ;
+;     Processor 6            ;   9.7%      ;
+;     Processor 7            ;   9.6%      ;
+;     Processor 8            ;   9.6%      ;
+;     Processor 9            ;   9.6%      ;
+;     Processor 10           ;   9.5%      ;
+;     Processor 11           ;   9.5%      ;
+;     Processor 12           ;   9.5%      ;
+;     Processor 13           ;   9.2%      ;
+;     Processor 14           ;   9.2%      ;
+;     Processor 15           ;   9.2%      ;
+;     Processor 16           ;   9.2%      ;
 +----------------------------+-------------+
 
 
@@ -129,7 +129,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------+--------+--------------------------+
 ; SDC File Path           ; Status ; Read at                  ;
 +-------------------------+--------+--------------------------+
-; FPGA_Footsies_Final.SDC ; OK     ; Tue Jun 24 17:13:28 2025 ;
+; FPGA_Footsies_Final.SDC ; OK     ; Tue Jun 24 19:17:55 2025 ;
 +-------------------------+--------+--------------------------+
 
 
@@ -151,7 +151,7 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 127.91 MHz ; 127.91 MHz      ; CLOCK_50   ;      ;
+; 122.55 MHz ; 122.55 MHz      ; CLOCK_50   ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -167,8 +167,8 @@ HTML report is unavailable in plain text report export.
 +----------+--------+-----------------+
 ; Clock    ; Slack  ; End Point TNS   ;
 +----------+--------+-----------------+
-; clk_vga  ; -9.492 ; -82.647         ;
-; CLOCK_50 ; 12.182 ; 0.000           ;
+; clk_vga  ; -9.424 ; -82.161         ;
+; CLOCK_50 ; 11.840 ; 0.000           ;
 +----------+--------+-----------------+
 
 
@@ -177,8 +177,8 @@ HTML report is unavailable in plain text report export.
 +----------+-------+-----------------+
 ; Clock    ; Slack ; End Point TNS   ;
 +----------+-------+-----------------+
-; CLOCK_50 ; 0.376 ; 0.000           ;
-; clk_vga  ; 5.774 ; 0.000           ;
+; CLOCK_50 ; 0.377 ; 0.000           ;
+; clk_vga  ; 5.763 ; 0.000           ;
 +----------+-------+-----------------+
 
 
@@ -199,7 +199,7 @@ No paths to report.
 +----------+-------+--------------------------------+
 ; Clock    ; Slack ; End Point TNS                  ;
 +----------+-------+--------------------------------+
-; CLOCK_50 ; 8.394 ; 0.000                          ;
+; CLOCK_50 ; 8.417 ; 0.000                          ;
 +----------+-------+--------------------------------+
 
 
@@ -209,13 +209,13 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+-------------------------------------------------+
-; Slow 1100mV 0C Model Fmax Summary               ;
-+-----------+-----------------+------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
-+-----------+-----------------+------------+------+
-; 125.8 MHz ; 125.8 MHz       ; CLOCK_50   ;      ;
-+-----------+-----------------+------------+------+
++--------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 120.31 MHz ; 120.31 MHz      ; CLOCK_50   ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -224,8 +224,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+----------------+
 ; Clock    ; Slack  ; End Point TNS  ;
 +----------+--------+----------------+
-; clk_vga  ; -9.234 ; -80.361        ;
-; CLOCK_50 ; 12.051 ; 0.000          ;
+; clk_vga  ; -9.196 ; -79.966        ;
+; CLOCK_50 ; 11.688 ; 0.000          ;
 +----------+--------+----------------+
 
 
@@ -234,8 +234,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+-------+----------------+
 ; Clock    ; Slack ; End Point TNS  ;
 +----------+-------+----------------+
-; CLOCK_50 ; 0.394 ; 0.000          ;
-; clk_vga  ; 5.529 ; 0.000          ;
+; CLOCK_50 ; 0.392 ; 0.000          ;
+; clk_vga  ; 5.515 ; 0.000          ;
 +----------+-------+----------------+
 
 
@@ -256,7 +256,7 @@ No paths to report.
 +----------+-------+-------------------------------+
 ; Clock    ; Slack ; End Point TNS                 ;
 +----------+-------+-------------------------------+
-; CLOCK_50 ; 8.352 ; 0.000                         ;
+; CLOCK_50 ; 8.381 ; 0.000                         ;
 +----------+-------+-------------------------------+
 
 
@@ -271,8 +271,8 @@ No synchronizer chains to report.
 +----------+--------+-----------------+
 ; Clock    ; Slack  ; End Point TNS   ;
 +----------+--------+-----------------+
-; clk_vga  ; -5.955 ; -51.376         ;
-; CLOCK_50 ; 14.670 ; 0.000           ;
+; clk_vga  ; -5.842 ; -50.959         ;
+; CLOCK_50 ; 14.388 ; 0.000           ;
 +----------+--------+-----------------+
 
 
@@ -282,7 +282,7 @@ No synchronizer chains to report.
 ; Clock    ; Slack ; End Point TNS   ;
 +----------+-------+-----------------+
 ; CLOCK_50 ; 0.183 ; 0.000           ;
-; clk_vga  ; 2.874 ; 0.000           ;
+; clk_vga  ; 2.864 ; 0.000           ;
 +----------+-------+-----------------+
 
 
@@ -303,7 +303,7 @@ No paths to report.
 +----------+-------+--------------------------------+
 ; Clock    ; Slack ; End Point TNS                  ;
 +----------+-------+--------------------------------+
-; CLOCK_50 ; 8.402 ; 0.000                          ;
+; CLOCK_50 ; 8.411 ; 0.000                          ;
 +----------+-------+--------------------------------+
 
 
@@ -318,8 +318,8 @@ No synchronizer chains to report.
 +----------+--------+----------------+
 ; Clock    ; Slack  ; End Point TNS  ;
 +----------+--------+----------------+
-; clk_vga  ; -5.544 ; -47.867        ;
-; CLOCK_50 ; 15.044 ; 0.000          ;
+; clk_vga  ; -5.455 ; -47.537        ;
+; CLOCK_50 ; 14.802 ; 0.000          ;
 +----------+--------+----------------+
 
 
@@ -328,8 +328,8 @@ No synchronizer chains to report.
 +----------+-------+----------------+
 ; Clock    ; Slack ; End Point TNS  ;
 +----------+-------+----------------+
-; CLOCK_50 ; 0.173 ; 0.000          ;
-; clk_vga  ; 2.543 ; 0.000          ;
+; CLOCK_50 ; 0.171 ; 0.000          ;
+; clk_vga  ; 2.534 ; 0.000          ;
 +----------+-------+----------------+
 
 
@@ -350,7 +350,7 @@ No paths to report.
 +----------+-------+-------------------------------+
 ; Clock    ; Slack ; End Point TNS                 ;
 +----------+-------+-------------------------------+
-; CLOCK_50 ; 8.389 ; 0.000                         ;
+; CLOCK_50 ; 8.409 ; 0.000                         ;
 +----------+-------+-------------------------------+
 
 
@@ -365,12 +365,12 @@ No synchronizer chains to report.
 +------------------+---------+-------+----------+---------+---------------------+
 ; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+---------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -9.492  ; 0.173 ; N/A      ; N/A     ; 8.352               ;
-;  CLOCK_50        ; 12.051  ; 0.173 ; N/A      ; N/A     ; 8.352               ;
-;  clk_vga         ; -9.492  ; 2.543 ; N/A      ; N/A     ; N/A                 ;
-; Design-wide TNS  ; -82.647 ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+; Worst-case Slack ; -9.424  ; 0.171 ; N/A      ; N/A     ; 8.381               ;
+;  CLOCK_50        ; 11.688  ; 0.171 ; N/A      ; N/A     ; 8.381               ;
+;  clk_vga         ; -9.424  ; 2.534 ; N/A      ; N/A     ; N/A                 ;
+; Design-wide TNS  ; -82.161 ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  CLOCK_50        ; 0.000   ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  clk_vga         ; -82.647 ; 0.000 ; N/A      ; N/A     ; N/A                 ;
+;  clk_vga         ; -82.161 ; 0.000 ; N/A      ; N/A     ; N/A                 ;
 +------------------+---------+-------+----------+---------+---------------------+
 
 
@@ -509,7 +509,6 @@ No synchronizer chains to report.
 ; CLOCK4_50 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[2]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[4]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[5]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[6]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[7]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[8]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
@@ -550,11 +549,12 @@ No synchronizer chains to report.
 ; GPIO[18]  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; GPIO[20]  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; GPIO[22]  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; KEY[3]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[0]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[1]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[2]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; KEY[3]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; CLOCK_50  ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[5]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[1]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[0]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[3]     ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
@@ -1067,7 +1067,7 @@ No synchronizer chains to report.
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
 ; CLOCK_50   ; clk_vga  ; 19       ; 0        ; 0        ; 0        ;
-; CLOCK_50   ; CLOCK_50 ; 3580     ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 3445     ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1078,7 +1078,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
 ; CLOCK_50   ; clk_vga  ; 19       ; 0        ; 0        ; 0        ;
-; CLOCK_50   ; CLOCK_50 ; 3580     ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 3445     ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1102,8 +1102,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 6     ; 6    ;
-; Unconstrained Input Ports       ; 10    ; 10   ;
-; Unconstrained Input Port Paths  ; 85    ; 85   ;
+; Unconstrained Input Ports       ; 11    ; 11   ;
+; Unconstrained Input Port Paths  ; 127   ; 127  ;
 ; Unconstrained Output Ports      ; 2     ; 2    ;
 ; Unconstrained Output Port Paths ; 10    ; 10   ;
 +---------------------------------+-------+------+
@@ -1143,6 +1143,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SW[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -1171,6 +1172,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SW[0]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[1]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[3]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -1190,7 +1192,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Tue Jun 24 17:13:26 2025
+    Info: Processing started: Tue Jun 24 19:17:52 2025
 Info: Command: quartus_sta FPGA_Footsies_Final -c FPGA_Footsies_Final
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1220,14 +1222,14 @@ Warning (332049): Ignored set_output_delay at FPGA_Footsies_Final.sdc(66): Argum
     Info (332050): set_output_delay -max -clock clk_vga 0.215 [get_ports VGA_BLANK] File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.sdc Line: 66
 Warning (332049): Ignored set_output_delay at FPGA_Footsies_Final.sdc(67): Argument <targets> is an empty collection File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.sdc Line: 67
     Info (332050): set_output_delay -min -clock clk_vga -1.485 [get_ports VGA_BLANK] File: C:/Users/ernka/Desktop/FPGA_Footsies_Final/FPGA_Footsies_Final.sdc Line: 67
-Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
-Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register keypad_1x3:keypad_inst|button_out[2] is being clocked by Clock_Divider:clk_div_inst|clk_out
-Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13]~DUPLICATE is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
 Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|game_core:game_inst|vga_driver:vga|green_reg[5] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out
+Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[8] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
+Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13] is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
+Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register keypad_1x3:keypad_inst|button_out[0] is being clocked by Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[5] is being clocked by game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
@@ -1237,33 +1239,33 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -9.492
+Info (332146): Worst-case setup slack is -9.424
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -9.492             -82.647 clk_vga 
-    Info (332119):    12.182               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.376
+    Info (332119):    -9.424             -82.161 clk_vga 
+    Info (332119):    11.840               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.377
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.376               0.000 CLOCK_50 
-    Info (332119):     5.774               0.000 clk_vga 
+    Info (332119):     0.377               0.000 CLOCK_50 
+    Info (332119):     5.763               0.000 clk_vga 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.394
+Info (332146): Worst-case minimum pulse width slack is 8.417
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.394               0.000 CLOCK_50 
+    Info (332119):     8.417               0.000 CLOCK_50 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
-Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register keypad_1x3:keypad_inst|button_out[2] is being clocked by Clock_Divider:clk_div_inst|clk_out
-Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13]~DUPLICATE is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
 Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|game_core:game_inst|vga_driver:vga|green_reg[5] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out
+Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[8] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
+Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13] is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
+Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register keypad_1x3:keypad_inst|button_out[0] is being clocked by Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[5] is being clocked by game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
@@ -1271,33 +1273,33 @@ Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divide
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -9.234
+Info (332146): Worst-case setup slack is -9.196
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -9.234             -80.361 clk_vga 
-    Info (332119):    12.051               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.394
+    Info (332119):    -9.196             -79.966 clk_vga 
+    Info (332119):    11.688               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.392
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.394               0.000 CLOCK_50 
-    Info (332119):     5.529               0.000 clk_vga 
+    Info (332119):     0.392               0.000 CLOCK_50 
+    Info (332119):     5.515               0.000 clk_vga 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.352
+Info (332146): Worst-case minimum pulse width slack is 8.381
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.352               0.000 CLOCK_50 
+    Info (332119):     8.381               0.000 CLOCK_50 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
-Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register keypad_1x3:keypad_inst|button_out[2] is being clocked by Clock_Divider:clk_div_inst|clk_out
-Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13]~DUPLICATE is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
 Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|game_core:game_inst|vga_driver:vga|green_reg[5] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out
+Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[8] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
+Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13] is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
+Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register keypad_1x3:keypad_inst|button_out[0] is being clocked by Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[5] is being clocked by game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
@@ -1305,31 +1307,31 @@ Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divide
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.955
+Info (332146): Worst-case setup slack is -5.842
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.955             -51.376 clk_vga 
-    Info (332119):    14.670               0.000 CLOCK_50 
+    Info (332119):    -5.842             -50.959 clk_vga 
+    Info (332119):    14.388               0.000 CLOCK_50 
 Info (332146): Worst-case hold slack is 0.183
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.183               0.000 CLOCK_50 
-    Info (332119):     2.874               0.000 clk_vga 
+    Info (332119):     2.864               0.000 clk_vga 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.402
+Info (332146): Worst-case minimum pulse width slack is 8.411
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.402               0.000 CLOCK_50 
+    Info (332119):     8.411               0.000 CLOCK_50 
 Info: Analyzing Fast 1100mV 0C Model
-Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register game_fsm:game|game_core:game_inst|Health_Block:health_block_p1|health[0] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
-Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register keypad_1x3:keypad_inst|button_out[2] is being clocked by Clock_Divider:clk_div_inst|clk_out
-Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13]~DUPLICATE is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
 Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|game_core:game_inst|vga_driver:vga|green_reg[5] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_vga|clk_out
+Warning (332060): Node: game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register game_fsm:game|game_core:game_inst|Sprite_renderer:render2|sprite_x[8] is being clocked by game_fsm:game|game_core:game_inst|Clock_Divider:clock_fsm|clk_out
+Warning (332060): Node: CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register CPU_logic:cpu|LFSR_16bit:my_lfsr|Shift_Register:shift|data_out[13] is being clocked by CPU_logic:cpu|Clock_Divider:clock_cpu|clk_out
+Warning (332060): Node: Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register keypad_1x3:keypad_inst|button_out[0] is being clocked by Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register game_fsm:game|Menu_Core:menu_inst|vga_driver:vga_ctrl|h_counter[5] is being clocked by game_fsm:game|Menu_Core:menu_inst|Clock_Divider:clk_div_inst|clk_out
 Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divider:clk_div_inst|clk_out was determined to be a clock but was found without an associated clock assignment.
@@ -1337,28 +1339,28 @@ Warning (332060): Node: game_fsm:game|Game_Over_core:game_over_inst|Clock_Divide
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.544
+Info (332146): Worst-case setup slack is -5.455
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.544             -47.867 clk_vga 
-    Info (332119):    15.044               0.000 CLOCK_50 
-Info (332146): Worst-case hold slack is 0.173
+    Info (332119):    -5.455             -47.537 clk_vga 
+    Info (332119):    14.802               0.000 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.171
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.173               0.000 CLOCK_50 
-    Info (332119):     2.543               0.000 clk_vga 
+    Info (332119):     0.171               0.000 CLOCK_50 
+    Info (332119):     2.534               0.000 clk_vga 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 8.389
+Info (332146): Worst-case minimum pulse width slack is 8.409
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     8.389               0.000 CLOCK_50 
+    Info (332119):     8.409               0.000 CLOCK_50 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 44 warnings
     Info: Peak virtual memory: 5438 megabytes
-    Info: Processing ended: Tue Jun 24 17:13:33 2025
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:12
+    Info: Processing ended: Tue Jun 24 19:18:01 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:14
 
 

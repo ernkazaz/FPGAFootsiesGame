@@ -78,13 +78,14 @@ keypad_1x3 keypad_inst (
 CPU_logic cpu(
 	.clock(CLOCK_50),
 	.clock_bypass(SW[1]),
-	.reset(~KEY[0]),
+	.reset(1'b0),
 	.clock_manual_button(~KEY[0]),
 	.lfsr_output(lfsr_out)
 );
 
 game_fsm game(
 	.clk_50(CLOCK_50),
+	.reset(SW[5]),
 	.switches(SW),
 	.keys(~KEY),
 	.keypad_p2(key_value),
