@@ -1,4 +1,8 @@
+// Updated Background renderer with timer display
 module Background_renderer (
+    input clk,                  // System clock
+    input reset,                // Reset signal
+    input timer_enable,         // Enable timer counting
     input [9:0] pixel_x,
     input [9:0] pixel_y,
     input [2:0] health_p1,      
@@ -15,7 +19,23 @@ module Background_renderer (
     wire [7:0] heart_color = 8'hFC;      
     wire [7:0] dead_heart_color = 8'h00; 
     wire [7:0] shield_color = 8'h1C;     
-    wire [7:0] used_shield_color = 8'h00; 
+    wire [7:0] used_shield_color = 8'h00;
+    wire [7:0] timer_color = 8'hFF;      // White color for timer text
+
+    // Timer counter value
+    wire [6:0] timer_count;
+    wire timer_pixel_on;
+
+    // Instantiate timer module
+    timer_module timer_inst (
+        .clk(clk),
+        .reset(reset),
+        .enable(timer_enable),
+        .pixel_x(pixel_x),
+        .pixel_y(pixel_y),
+        .count(timer_count),
+        .pixel_on(timer_pixel_on)
+    );
 
     // Ground and sun (original elements)
     wire inside_ground = (pixel_y >= 420);
@@ -105,8 +125,9 @@ module Background_renderer (
     wire [7:0] right_shield2_color = (block_count_p2 == threeblock || block_count_p2 == twoblocks) ? shield_color : used_shield_color;
     wire [7:0] right_shield3_color = (block_count_p2 == threeblock) ? shield_color : used_shield_color;
 
-    // Priority-based color assignment with individual heart and shield colors
-    assign bg_color = inside_ground ? ground_color :
+    // Priority-based color assignment with timer added (timer has high priority)
+    assign bg_color = timer_pixel_on ? timer_color :
+                     inside_ground ? ground_color :
                      inside_left_heart1 ? left_heart1_color :
                      inside_left_heart2 ? left_heart2_color :
                      inside_left_heart3 ? left_heart3_color :
@@ -123,3 +144,6 @@ module Background_renderer (
                      background_color;
 
 endmodule
+
+
+

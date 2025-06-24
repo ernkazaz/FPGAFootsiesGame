@@ -1,6 +1,7 @@
 module game_core(
 
     //Clock inputs
+	 input enable,
     input clock,
     input clock_bypass,
     input clock_manual_button,
@@ -290,11 +291,15 @@ module game_core(
     );
 
     Background_renderer background (
+		  .clk(clock),
+		  .reset(reset),
+		  .timer_enable(enable),
         .pixel_x  (pixel_x),
         .pixel_y  (pixel_y),
         .bg_color (bg_color),
         .health_p1(health_p1),
-        .health_p2(health_p2),
+       
+		 .health_p2(health_p2),
         .block_count_p1(block_count_p1),
         .block_count_p2(block_count_p2)
     );

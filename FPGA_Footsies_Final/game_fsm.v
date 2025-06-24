@@ -181,6 +181,7 @@ module game_fsm (
     );
 
     game_core game_inst(
+		  .enable(game_enable),
         .clock(clk_50),
         .clock_bypass(game_clock_bypass),
         .clock_manual_button(keys[0]),
